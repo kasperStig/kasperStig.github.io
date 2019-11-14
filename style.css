@@ -5,6 +5,19 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+body .notes {
+  float: left;
+  width: 35px;
+}
+body .notes .over {
+  padding-top: 4px;
+}
+body .notes .note {
+  font-size: 26px;
+}
+body .notes .under {
+  padding-bottom: 10px;
+}
 body .fretboard {
   display: flex;
   flex-wrap: wrap;
@@ -13,39 +26,62 @@ body .fretboard .nut {
   width: 10px;
   background-color: saddlebrown;
 }
-body .fretboard .nut .dot {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  display: none;
-  position: absolute;
-  top: 50%;
-  right: -72%;
-  border: 4px solid black;
-}
 body .fretboard .fret {
-  -ms-flex: 0 0 8.333333%;
-  flex: 0 0 8.333333%;
-  max-width: 8.333333%;
+  -ms-flex: 0 0 8%;
+  flex: 0 0 8%;
+  max-width: 8%;
+  position: relative;
 }
-body .fretboard .fret .dot {
+body .fretboard .fret .bar {
+  width: 10px;
+  height: 100%;
+  background-color: grey;
+  border-radius: 15%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+body .fretboard .string .over {
+  padding-top: 20px;
+}
+body .fretboard .string .under {
+  padding-bottom: 20px;
+}
+body .fretboard .string .line {
+  border-bottom: 4px solid black;
+  position: relative;
+  z-index: 1;
+  transition: border 300ms ease;
+}
+body .fretboard .string .line .dot {
   height: 20px;
   width: 20px;
   background-color: black;
   border-radius: 50%;
   display: none;
   position: absolute;
-  top: 50%;
-  right: 40%;
+  top: -9px;
+  right: 42%;
 }
-body .fretboard .string {
-  border-bottom: 2px solid black;
-  height: 20px;
-  margin-bottom: 20px;
+body .fretboard .string .x {
   position: relative;
+  height: 4px;
+}
+body .fretboard .string .x .dot {
+  height: 20px;
+  width: 20px;
+  display: none;
+  position: absolute;
+  top: -15px;
+  right: -4px;
+  font-size: 30px;
+  font-weight: 900;
 }
 body .fretboard .string:hover {
-  -webkit-box-shadow: 0px 0px 56px 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 56px 10px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 56px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+body .fretboard .string:hover .line {
+  border-color: green;
+  transition: border 300ms ease;
 }

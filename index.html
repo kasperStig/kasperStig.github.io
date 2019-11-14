@@ -3,161 +3,52 @@
 <head>
 <title>Notes</title>
 <link rel="stylesheet" type="text/css" href="style.css">
-
+<script src="notes.js"></script>
 </head>
 <body>
 
 <h1>Notes</h1>
-
 <div class="notes">
-    <div id="string_0">e</div>
-    <div id="string_1">b</div>
-    <div id="string_2">g</div>
-    <div id="string_3">d</div>
-    <div id="string_4">a</div>
-    <div id="string_5">e</div>
-</div>
-<div class="fretboard">
-    <div class="nut"> 
-        <div class="string" data-string="0" data-note="x">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="1" data-note="x">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="2" data-note="x">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="3" data-note="x">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="4" data-note="x">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="5" data-note="x">
-            <div class="dot"></div>
-        </div>
+    <div id="string_0">
+        <div class="over"></div>
+        <div class="note">e</div>
+        <div class="under"></div>
     </div>
+    <div id="string_1"> 
+        <div class="over"></div>
+        <div class="note">b</div>
+        <div class="under"></div></div>
+    <div id="string_2"> 
+        <div class="over"></div>
+        <div class="note">g</div>
+        <div class="under"></div></div>
+    <div id="string_3"> 
+        <div class="over"></div>
+        <div class="note">d</div>
+        <div class="under"></div></div>
+    <div id="string_4"> 
+        <div class="over"></div>
+        <div class="note">a</div>
+        <div class="under"></div>
+    </div>
+    <div id="string_5"> 
+        <div class="over"></div>
+        <div class="note">e</div>
+        <div class="under"></div>
+    </div>
+</div>
+
+<div id="fretboard" class="fretboard">
    
-    <div class="fret">
-        <div class="string" data-string="0" data-note="f">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="1" data-note="c">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="2" data-note="g#">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="3" data-note="d#">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="4" data-note="a#">
-            <div class="dot"></div>
-        </div>
-        <div class="string" data-string="5" data-note="f">
-            <div class="dot"></div>
-        </div>
-    </div>
-    <div class="nut"></div>
-
-    <div class="fret">
-            <div class="string" data-string="0" data-note="f">
-                <div class="dot"></div>
-            </div>
-            <div class="string" data-string="1" data-note="c">
-                <div class="dot"></div>
-            </div>
-            <div class="string" data-string="2" data-note="g#">
-                <div class="dot"></div>
-            </div>
-            <div class="string" data-string="3" data-note="d#">
-                <div class="dot"></div>
-            </div>
-            <div class="string" data-string="4" data-note="a#">
-                <div class="dot"></div>
-            </div>
-            <div class="string" data-string="5" data-note="f">
-                <div class="dot"></div>
-            </div>
-        </div>
-        <div class="nut"></div>
-
-        <div class="fret">
-                <div class="string" data-string="0" data-note="f">
-                    <div class="dot"></div>
-                </div>
-                <div class="string" data-string="1" data-note="c">
-                    <div class="dot"></div>
-                </div>
-                <div class="string" data-string="2" data-note="g#">
-                    <div class="dot"></div>
-                </div>
-                <div class="string" data-string="3" data-note="d#">
-                    <div class="dot"></div>
-                </div>
-                <div class="string" data-string="4" data-note="a#">
-                    <div class="dot"></div>
-                </div>
-                <div class="string" data-string="5" data-note="f">
-                    <div class="dot"></div>
-                </div>
-            </div>
-            <div class="nut"></div>
-
-            <div class="fret">
-                    <div class="string" data-string="0" data-note="f">
-                        <div class="dot"></div>
-                    </div>
-                    <div class="string" data-string="1" data-note="c">
-                        <div class="dot"></div>
-                    </div>
-                    <div class="string" data-string="2" data-note="g#">
-                        <div class="dot"></div>
-                    </div>
-                    <div class="string" data-string="3" data-note="d#">
-                        <div class="dot"></div>
-                    </div>
-                    <div class="string" data-string="4" data-note="a#">
-                        <div class="dot"></div>
-                    </div>
-                    <div class="string" data-string="5" data-note="f">
-                        <div class="dot"></div>
-                    </div>
-                </div>
-                <div class="nut"></div>
-                
 </div>
 
-
+<div class="chord"> Notes played:<div id="chord-values" class="value"></div></div>
 
 <script>
-    var noteMap = {
-        0 : 'e',
-        1 : 'b',
-        2 : 'g',
-        3 : 'd',
-        4 : 'a',
-        5 : 'e'
-    };
-        function initializeStrings() {
-            var strings = document.getElementsByClassName('string'); 
-            for (i = 0; i < strings.length; ++i) {
-                strings[i].addEventListener('click', function() {
-                    var dot = this.getElementsByClassName('dot')[0];
-                    if(dot.style.display === '') {
-                        dot.style.display = 'inline';
-                        document.getElementById('string_' + this.dataset.string).innerHTML = this.dataset.note;
-                        document.getElementById('string_' + this.dataset.string).style.color = 'green';
-                    } else {
-                        dot.style.display = ''
-                        document.getElementById('string_' + this.dataset.string).innerHTML = noteMap[this.dataset.string];
-                        document.getElementById('string_' + this.dataset.string).style.color = 'black';
-                    }
-                });
-            }
-        }
-        initializeStrings();
-    </script>
+    initializeNut();
+    initializeFretboard();
+    initializeStrings();
+    guessChord();
+</script>
 </body>
 </html>
