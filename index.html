@@ -2,51 +2,24 @@
 <html>
     <head>
         <title>Notes</title>
-        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-        <script src="/assets/js/notes.js"></script>
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <script src="./assets/js/fretboard.js"></script>
+        <script src="./assets/js/chordGuesser.js"></script>
     </head>
     <body>
         <h1>Notes</h1>
-        <div class="notes">
-            <div id="string_0">
-                <div class="over"></div>
-                <div class="note">e</div>
-                <div class="under"></div>
-            </div>
-            <div id="string_1"> 
-                <div class="over"></div>
-                <div class="note">b</div>
-                <div class="under"></div>
-            </div>
-            <div id="string_2"> 
-                <div class="over"></div>
-                <div class="note">g</div>
-                <div class="under"></div>
-            </div>
-            <div id="string_3"> 
-                <div class="over"></div>
-                <div class="note">d</div>
-                <div class="under"></div>
-            </div>
-            <div id="string_4"> 
-                <div class="over"></div>
-                <div class="note">a</div>
-                <div class="under"></div>
-            </div>
-            <div id="string_5"> 
-                <div class="over"></div>
-                <div class="note">e</div>
-                <div class="under"></div>
-            </div>
+        <div id="fretboard_root"></div>
+        <div class="chord-guess">
+            <span>Best guess for chord(s): </span><span id="chord"></span>
         </div>
-        <div id="fretboard" class="fretboard"></div>
-        <div class="chord">Notes played: <div id="chord-values" class="value"></div></div>
-
         <script>
-            initializeNut();
-            initializeFretboard();
-            initializeStrings();
-            guessChord();
+            var chordGuesser = new ChordGuesser();
+            let fretboard = new Fretboard();
+            fretboard.init('fretboard_root');
+            fretboard.onNotesUpdate(function(notes) { 
+                document.getElementById('chord').innerHTML = chordGuesser.guess(notes).join(', ');
+               // console.log(chordGuesser.guess(notes))   ;
+            });
         </script>
     </body>
 </html>

@@ -42,6 +42,15 @@ body .fretboard .fret .bar {
   right: 0;
   z-index: -1;
 }
+body .fretboard .fret .single-dot {
+  position: absolute;
+  top: 42%;
+  left: 21%;
+  height: 41px;
+  width: 41px;
+  background: black;
+  border-radius: 60%;
+}
 body .fretboard .string .over {
   padding-top: 20px;
 }
@@ -52,7 +61,6 @@ body .fretboard .string .line {
   border-bottom: 4px solid black;
   position: relative;
   z-index: 1;
-  transition: border 300ms ease;
 }
 body .fretboard .string .line .dot {
   height: 20px;
@@ -81,7 +89,7 @@ body .fretboard .string .x .dot {
 body .fretboard .string:hover {
   cursor: pointer;
 }
-body .fretboard .string:hover .line {
-  border-color: green;
-  transition: border 300ms ease;
+body .chord-guess {
+  padding-top: 20px;
+  font-size: 26px;
 }
