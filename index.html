@@ -18,7 +18,6 @@
             fretboard.init('fretboard_root');
             fretboard.onNotesUpdate(function(notes) { 
                 document.getElementById('chord').innerHTML = chordGuesser.guess(notes).join(', ');
-               // console.log(chordGuesser.guess(notes))   ;
             });
         </script>
     </body>

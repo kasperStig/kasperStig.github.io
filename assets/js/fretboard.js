@@ -57,7 +57,16 @@ var Fretboard = function() {
                 4 : getNote(i, 4),
                 5 : getNote(i, 5),
             };
-            document.getElementById('fretboard').insertAdjacentHTML('beforeend', renderFret(fretNotes));
+            document.getElementById('fretboard').insertAdjacentHTML('beforeend', renderFret(fretNotes, i));
+            if(i === 3 || i === 5 || i === 7 || i === 9) {
+                var fret = document.getElementById('fretboard').querySelectorAll("[data-fret='"+i+"']")[0];
+                fret.insertAdjacentHTML('beforeend', `<div class="single-dot"></div>`);
+            }
+            if(i === 12) {
+                var fret = document.getElementById('fretboard').querySelectorAll("[data-fret='"+i+"']")[0];
+                fret.insertAdjacentHTML('beforeend', `<div class="double-dot-one"></div>`);
+                fret.insertAdjacentHTML('beforeend', `<div class="double-dot-two"></div>`);
+            }
         }
     }
 
@@ -116,7 +125,7 @@ var Fretboard = function() {
         var nutStrings = '';
         for(i = 0; i < 6; i++) {
             nutStrings += 
-                `<div class="string" data-string="${i}" data-note="x">
+                `<div class="string string-${i}" data-string="${i}" data-note="x">
                     <div class="over"></div>
                     <div class="x">
                         <div class="dot">X</div>
@@ -127,44 +136,44 @@ var Fretboard = function() {
         return nutHeader + nutStrings + `</div>`;
     }
 
-    function renderFret(fretNotes) {
-        return `<div class="fret">
-            <div class="string" data-string="0" data-note="${fretNotes[0]}">
+    function renderFret(fretNotes, fret) {
+        return `<div class="fret" data-fret="${fret}">
+            <div class="string string-0" data-string="0" data-note="${fretNotes[0]}">
                 <div class="over"></div>
                 <div class="line">
                     <div class="dot"></div>
                 </div>
                 <div class="under"></div>
             </div>
-            <div class="string" data-string="1" data-note="${fretNotes[1]}">
+            <div class="string string-1" data-string="1" data-note="${fretNotes[1]}">
                 <div class="over"></div>
                 <div class="line">
                     <div class="dot"></div>
                 </div>
                 <div class="under"></div>
             </div>
-            <div class="string" data-string="2" data-note="${fretNotes[2]}">
+            <div class="string string-2" data-string="2" data-note="${fretNotes[2]}">
                 <div class="over"></div>
                 <div class="line">
                     <div class="dot"></div>
                 </div>
                 <div class="under"></div>
             </div>
-            <div class="string" data-string="3" data-note="${fretNotes[3]}">
+            <div class="string string-3" data-string="3" data-note="${fretNotes[3]}">
                 <div class="over"></div>
                 <div class="line">
                     <div class="dot"></div>
                 </div>
                 <div class="under"></div>
             </div>
-            <div class="string" data-string="4" data-note="${fretNotes[4]}">
+            <div class="string string-4" data-string="4" data-note="${fretNotes[4]}">
                 <div class="over"></div>
                 <div class="line">
                     <div class="dot"></div>
                 </div>
                 <div class="under"></div>
             </div>
-            <div class="string" data-string="5" data-note="${fretNotes[5]}">
+            <div class="string string-5" data-string="5" data-note="${fretNotes[5]}">
                 <div class="over"></div>
                 <div class="line">
                     <div class="dot"></div>
