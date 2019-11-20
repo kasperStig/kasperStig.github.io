@@ -3,7 +3,7 @@
   width: 35px;
 }
 .notes .over {
-  padding-top: 4px;
+  padding-top: 6px;
 }
 .notes .note {
   font-size: 26px;
@@ -18,7 +18,7 @@
   background-color: black;
 }
 .fretboard .nut {
-  width: 11px;
+  width: 1%;
   background-color: saddlebrown;
 }
 .fretboard .fret {
@@ -39,7 +39,7 @@
 .fretboard .fret .single-dot {
   position: absolute;
   top: 44%;
-  left: 21%;
+  left: 26%;
   height: 35px;
   width: 35px;
   background: burlywood;
@@ -48,7 +48,7 @@
 .fretboard .fret .double-dot-one {
   position: absolute;
   top: 11%;
-  left: 21%;
+  left: 26%;
   height: 35px;
   width: 35px;
   background: burlywood;
@@ -57,7 +57,7 @@
 .fretboard .fret .double-dot-two {
   position: absolute;
   top: 77%;
-  left: 21%;
+  left: 26%;
   height: 35px;
   width: 35px;
   background: burlywood;
@@ -65,37 +65,64 @@
 }
 .fretboard .string-0 .line {
   border-bottom: 1px solid #757575;
-  height: 5px;
+}
+.fretboard .string-0 .over {
+  padding-top: 22.5px;
+}
+.fretboard .string-0 .under {
+  padding-bottom: 22.5px;
 }
 .fretboard .string-1 .line {
   border-bottom: 2px solid #757575;
-  height: 4px;
+}
+.fretboard .string-1 .over {
+  padding-top: 22px;
+}
+.fretboard .string-1 .under {
+  padding-bottom: 22px;
 }
 .fretboard .string-2 .line {
   border-bottom: 3px solid #b87333;
-  height: 3px;
+}
+.fretboard .string-2 .over {
+  padding-top: 21.5px;
+}
+.fretboard .string-2 .under {
+  padding-bottom: 21.5px;
 }
 .fretboard .string-3 .line {
   border-bottom: 4px solid #b87333;
-  height: 2px;
+}
+.fretboard .string-3 .over {
+  padding-top: 21px;
+}
+.fretboard .string-3 .under {
+  padding-bottom: 21px;
 }
 .fretboard .string-4 .line {
   border-bottom: 5px solid #b87333;
-  height: 1px;
+}
+.fretboard .string-4 .over {
+  padding-top: 20.5px;
+}
+.fretboard .string-4 .under {
+  padding-bottom: 20.5px;
 }
 .fretboard .string-5 .line {
   border-bottom: 6px solid #b87333;
-  height: 0px;
+}
+.fretboard .string-5 .over {
+  padding-top: 20px;
+}
+.fretboard .string-5 .under {
+  padding-bottom: 20px;
 }
 .fretboard .string {
   position: relative;
   z-index: 1;
 }
-.fretboard .string .over {
-  padding-top: 20px;
-}
-.fretboard .string .under {
-  padding-bottom: 20px;
+.fretboard .string .chosen {
+  box-shadow: -3px 0px 14px 3px white;
 }
 .fretboard .string .line .dot {
   height: 30px;
@@ -109,7 +136,6 @@
 }
 .fretboard .string .x {
   position: relative;
-  height: 6px;
 }
 .fretboard .string .x .dot {
   height: 20px;

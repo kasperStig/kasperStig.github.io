@@ -94,6 +94,13 @@ var Fretboard = function() {
         return Array.from(new Set(notes));
     }
 
+    function markNoteChosen(note) {
+        var notes = document.getElementById('fretboard').querySelectorAll("[data-string='"+note+"']");
+        for(i = 0; i < notes.length; i++) { 
+            notes[i].getElementsByClassName('line')[0].classList.add('chosen');
+        }
+    }
+
     function getNote(fret, string) {
         return notes[(fret+offset[string]) % 12];
     }

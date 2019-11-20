@@ -3,16 +3,212 @@
     <head>
         <title>Notes</title>
         <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/fretboard.css">
+        <link rel="stylesheet" type="text/css" href="./assets/css/chord_guesser.css">
         <script src="./assets/js/fretboard.js"></script>
         <script src="./assets/js/chordGuesser.js"></script>
     </head>
+    <style>
+    .scale-wrapper {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: maroon;
+        position: absolute;
+        right: 5%;
+        box-shadow: 1px 1px 10px 5px rgba(0,0,0,0.5);
+    }
+    .white-bar {
+        border-radius: 10%;
+        background-color: white;
+        margin-left: 25%;
+        width: 50%;
+        height: 5%;
+        display: inline-flex;
+    }
+
+    .bar-wrapper {
+        padding-top: 8%;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .notes-popup, .modes-popup {
+        display: none;
+        position: absolute;
+        right: 120%;
+        top: -15%;
+        border-radius: 5px;
+        background-color: maroon;
+        box-shadow: 1px 1px 10px 5px rgba(0,0,0,0.5);
+    }
+
+    .modes-popup{
+        right: 140%;
+        top: -80%;
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        color: white;
+    }
+
+    li {
+        padding-right: 1em;
+        padding-left: 1em;
+        padding-top: .25em;
+        cursor: pointer;
+        padding-bottom: .25em;
+        position: relative;
+    }
+
+    li:hover {
+        color: gold;
+    }
+
+    .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid maroon;
+        position: absolute;
+        right: -15px;
+        top: 10%;
+    }
+
+    </style>
     <body>
         <h1>Notes</h1>
         <div id="fretboard_root"></div>
         <div class="chord-guess">
             <span>Best guess for chord(s): </span><span id="chord"></span>
         </div>
+        <div class="scale-notes">
+            <span id="notes-display"></span>
+        </div>
+        <div class="scale-wrapper" id="scale-wrapper">
+            <div class='bar-wrapper'>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+            </div>
+            <div class="notes-popup" id='notes-popup'>
+                <ul id='notes-list'>
+
+                </ul>
+                <div class="arrow-right"></div>
+            </div>
+        </div>
+
         <script>
+            
+           
+            function gen() {
+                var notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+                var modes = ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"];
+               
+                var offset = 3;
+                var listOfNotes = '';
+                for(i = 0; i < notes.length; i++) {
+                    var note = notes[(i + offset) % 12];
+                    var listOfModes = '';
+                    for(j = 0; j < modes.length; j++) {
+                        listOfModes += `<li class="mode" data-offset="${j}" data-note="${(i + offset) % 12}">${modes[j]}</li>`
+                    }
+                    listOfNotes += `<li>
+                        <span class="note">${note}</span>
+                        <div class="modes-popup">
+                            <ul>${listOfModes}</ul>
+                            <div class="arrow-right"></div>
+                        </div>
+                    </li>`;
+                }
+               
+                document.getElementById('notes-list').insertAdjacentHTML('beforeend', listOfNotes);
+            }
+
+            gen();
+
+            document.getElementsByClassName('bar-wrapper')[0].addEventListener('click', function () {
+                var listPop = document.getElementById('scale-wrapper').getElementsByClassName('notes-popup')[0];
+                if(listPop.style.display === '') {
+                    listPop.style.display = 'inline-block';
+                }
+                else {
+                    listPop.style.display = '';
+                }
+            })
+
+            var notesPopup = document.getElementById('notes-popup');
+            var modesPopup = document.getElementsByClassName('modes-popup');
+            
+            var listElements = notesPopup.getElementsByClassName('note');
+            for (j = 0; j < listElements.length; j++) {
+                listElements[j].addEventListener('click', function() {
+                    var listPop = this.parentNode.getElementsByClassName('modes-popup')[0];
+                    if(listPop.style.display == '') {
+                        for(k = 0; k < modesPopup.length; k++) {
+                            modesPopup[k].style.display = '';
+                        }
+                        listPop.style.display = 'inline-block';
+                    } else {
+                        listPop.style.display = '';
+                    }
+                });
+            }
+    
+            function printRoot(root) {
+                if(root.length === 1) {
+                    return root.charAt(0).toUpperCase();
+                }
+                return root.charAt(0).toUpperCase() + root.charAt(1);
+            }
+            var scale = [2, 2, 1, 2, 2, 2, 1];
+            var m = ["", "m", "m", "", "", 'm', 'dim'];
+            var modeElements = document.getElementsByClassName('mode');
+            for(i = 0; i < modeElements.length; i++) {
+                modeElements[i].addEventListener('click', function() {
+                    clearChosenNotes();
+                    document.getElementById('notes-display').innerHTML = '';
+                    var notes = ['a', 'a#', 'b', 'c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#'];
+                    var noteIndex = parseInt(this.dataset.note);
+                    var modeOffset = parseInt(this.dataset.offset);
+                    var acc = 0;
+                    var notesToDisplay = [];
+                    
+                    notesToDisplay.push(printRoot(notes[noteIndex]) + m[modeOffset % 7]);
+                    markNoteChosen(notes[noteIndex]);
+
+                    for(j = 0; j < scale.length - 1; j++) {
+                        acc = acc + scale[(j + modeOffset) % 7];
+                        var scaleNote = notes[(noteIndex + acc) % 12];
+                        markNoteChosen(scaleNote);
+                        notesToDisplay.push(printRoot(scaleNote) + m[(j + 1 + modeOffset) % 7]);
+                    }
+                    document.getElementById('notes-display').innerHTML = notesToDisplay.join(', ');
+
+                    this.offsetParent.style.display = '';
+                    this.parentElement.parentElement.parentElement.parentElement.parentElement.style.display = ''
+                });
+            }
+
+            function clearChosenNotes() {
+                var lines = document.getElementsByClassName('line');
+                for(i = 0; i < lines.length; i++) {
+                    lines[i].classList.remove('chosen');
+                }
+            }
+
+            function markNoteChosen(note) {
+                var notes = document.getElementById('fretboard').querySelectorAll("[data-note='"+note+"']");
+                for(i = 0; i < notes.length; i++) { 
+                    notes[i].getElementsByClassName('line')[0].classList.add('chosen');
+                }
+            }
             var chordGuesser = new ChordGuesser();
             let fretboard = new Fretboard();
             fretboard.init('fretboard_root');
