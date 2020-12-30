@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rejse</title>
+        <script src="./assets/js/base.js"></script>
+        <script src="./assets/js/rejseplanen.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.587.0.min.js"></script>
+        <script src="./assets/js/lambda.js"></script>
+        <style>
+            .tab {
+                width: 33%;
+                display: inline-block;
+                background: #000d2a;
+                color: #ffffff;
+            }
+
+            .active {
+                border-bottom: 5px solid #eaba2a;
+                color: #eaba2a;
+            }
+
+            .tab:hover {
+                background: #ffec60;
+                color: #000;
+            }
+
+        </style>
+
+      
+    </head>
+    <body style="margin: 0">
+        <div style="background: #000000"><span style="text-align: left; color: white">Last updated: now</span></div>
+      
+        <div>
+            <div class="tab">
+                <div style="padding: 20px 0; text-align:center">254</div>    
+            </div>
+            <div class="tab">
+                <div style="padding: 20px 0; text-align:center">253</div>
+            </div>
+            <div class="tab">
+                <div style="padding: 20px 0; text-align:center">251</div>
+            </div>
+        </div>
+    </body>
+</html>

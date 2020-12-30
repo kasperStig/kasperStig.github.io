@@ -1,0 +1,226 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+.container .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.container .col {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+.container .col-2 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  max-width: 20%;
+  height: 1000px;
+}
+.container .col-10 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  max-width: 80%;
+  height: 1000px;
+}
+.container .hidden {
+  opacity: 0 !important;
+  visibility: hidden;
+  position: absolute;
+  height: 0;
+}
+.header-row {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.line-header {
+  padding: 25px;
+  position: relative;
+  z-index: 1;
+}
+.line-header .header {
+  padding: 2% 10%;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 600;
+}
+.line-header:hover {
+  color: #eaba2a;
+}
+.line-header:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  background: #000d2a;
+  z-index: -1;
+  transition: transform 0.3s;
+}
+.line-header:hover::after {
+  transform: scaleY(1);
+}
+.line-col {
+  text-align: center;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+.loaded {
+  opacity: 1;
+  cursor: pointer;
+}
+.chosen {
+  background: #000d2a;
+  color: #eaba2a;
+}
+.dep-wrapper {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+.dep-col {
+  text-align: center;
+  margin-top: 30px;
+  transition: visibility 0s, opacity 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+.dep-col .dep-header {
+  font-weight: 600;
+  font-size: 24px;
+  color: #eaba2a;
+  background: #000d2a;
+  box-shadow: 0px 3px 4px 0px #eaba2a;
+  z-index: 5;
+}
+.dep-col .dep-header .dep-text {
+  padding-bottom: 1%;
+  padding-top: 2%;
+  border-right: 1px solid #eaba2a;
+}
+.dep-col .dep-header .dep-text:last-child {
+  border-right: none;
+}
+.dep-col .dep-body {
+  padding: 1% 0;
+  color: #000d2a;
+}
+.dep-col .time-wrapper {
+  font-size: 18px;
+  line-height: 20px;
+  padding: 10px 0;
+}
+.dep-col .time-wrapper .time {
+  position: relative;
+}
+.dep-col .time-wrapper .time .off {
+  position: absolute;
+  left: 110%;
+  color: #FF0027;
+  width: fit-content;
+}
+.dep-col .time-wrapper .time .goes-further {
+  position: absolute;
+  left: -10px;
+  color: #eaba2a;
+}
+.dep-footer {
+  background: #000d2a;
+  color: #eaba2a;
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+  height: 90%;
+  min-height: 90%;
+  transform: translateY(90%);
+  transform-origin: bottom;
+  transition: transform 0.5s ease-out;
+}
+.dep-footer .routeplan {
+  text-align: center;
+  position: relative;
+}
+.dep-footer .routeplan .white-circle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: white;
+  right: calc(50% - 30px);
+  top: -30px;
+  border-radius: 50%;
+}
+.dep-footer .routeplan .route-button {
+  background: #eaba2a;
+  position: absolute;
+  top: -20px;
+  right: calc(50% - 20px);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1;
+  transition: background 0.7s ease;
+}
+.dep-footer .route-body {
+  position: absolute;
+  top: 4%;
+  height: 100%;
+  background: #000d2a;
+  width: 100%;
+  transition: background 0.7s ease;
+}
+.dep-footer-open .top-bar {
+  height: 4%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  z-index: 1;
+}
+.dep-footer-open .route-body {
+  background: white;
+}
+.dep-footer-open .route-body .map {
+  transition: background 0.7s ease;
+  background: #eaba2a;
+  width: 100%;
+  height: 100%;
+}
+.dep-footer-open.dep-footer {
+  height: auto;
+  transform: translateY(4%);
+  transform-origin: bottom;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.dep-footer-hover.dep-footer {
+  height: auto;
+  transform: translateY(88%);
+  transform-origin: bottom;
+}
+.hidden {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner-wrapper {
+  padding-top: 20%;
+  align-items: center;
+}
+.spinner-wrapper .spinner {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  vertical-align: text-bottom;
+  border: 3px solid #eaba2a;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}

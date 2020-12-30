@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rejse</title>
+        <script src="./assets/js/base.js"></script>
+        <script src="./assets/js/rejseplanen.js"></script>
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.587.0.min.js"></script>
+        <script src="./assets/js/lambda.js"></script>
+        <link rel="stylesheet" type="text/css" href="./assets/css/journey.css">
+    </head>
+    <body>
+        <div class="container" id="wrapper">
+            <div class="row header-row">
+                <div class="col line-col" id='line-251'>
+                    <div class="line-header" id='header-251'>
+                        <span class="header">251</span>
+                    </div>
+                </div>
+                <div class="col line-col" id='line-253'>
+                    <div class="line-header" id='header-253'>
+                        <span class="header">253</span>
+                    </div>
+                </div>
+                <div class="col line-col" id='line-254'>
+                    <div class="line-header" id='header-254'>
+                        <span class="header">254</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row dep-wrapper" id='dep-body'>
+                <div class="col dep-col hidden" id='dep-251'>
+                    <div class="row dep-header">
+                        <div class="col dep-text"><span id='route-251-a'>&rarr; </span></div>
+                        <div class="col dep-text"><span id='route-251-b'>&rarr; </span></div>
+                    </div>    
+                    <div class="row dep-body">
+                        <div class="col" id='dep-251-a'></div>
+                        <div class="col" id='dep-251-b'></div>
+                    </div>
+                </div>
+                <div class="col dep-col hidden" id='dep-253'>
+                    <div class="row dep-header">
+                        <div class="col dep-text"><span id='route-253-a'>&rarr; </span></div>
+                    </div>    
+                    <div class="row dep-body">
+                        <div class="col" id='dep-253-a'></div>
+                    </div>
+                </div>
+                <div class="col dep-col hidden" id='dep-254'>
+                    <div class="row dep-header">
+                        <div class="col dep-text"><span id='route-254-a'>&rarr; </span></div>
+                        <div class="col dep-text"><span id='route-254-b'>&rarr; </span></div>
+                    </div>
+                    <div class="row dep-body">
+                        <div class="col" id='dep-254-a'></div>
+                        <div class="col" id='dep-254-b'></div>
+                    </div>
+                </div>
+            </div>
+            <div id='loader' class="row hidden">
+                <div class="col spinner-wrapper">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+            <div class="row dep-footer" id='dep-footer'>
+                <div class="col routeplan">
+                    <div class="row top-bar">
+                        <div class="col">
+                            <div class="white-circle"></div>
+                            <div class="route-button" id='route-button'></div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col">
+                            <div class="route-body">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <div class="route-list" id='route-list'></div>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="map"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+               
+            </div>
+
+        </div>
+    </body>
+    <script>
+        //TODO:
+        // Add reload button
+        // Add stop list at the bottom (should be in the Rejseplanen data)
+        let rejseplanen = new Rejseplanen();
+        let lambda = new Lambda();
+
+        function updateDepartures() {
+            lambda.invoke(rejseplanen.populate, function() {
+                rejseplanen.init();
+                add('line-251', 'loaded');
+                add('line-253', 'loaded');
+                add('line-254', 'loaded');
+                hide('loader');
+            },
+            function() {
+                remove('line-251', 'loaded');
+                remove('line-253', 'loaded');
+                remove('line-254', 'loaded');
+                show('loader');
+            });
+        }
+       // rejseplanen.init();
+        updateDepartures();
+
+    </script>
+</html>
