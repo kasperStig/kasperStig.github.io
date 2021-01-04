@@ -13,6 +13,7 @@ class Zerath extends React.Component {
                 </Grouping>
                 <Grouping name="Items">
                     <ChargeResource name="Ring of Rebellion" charges="1"/>
+                    <ChargeResource name="Cape of Hellish Resilience" charges="1"/>
                     <ChargeResource name="Vox Populi" charges="1"/>
                     <TransitionResource name="Vox Populi" transition="Piercing, Cold, Fire, Lightning, Acid, Necrotic"/> 
                 </Grouping>
@@ -20,6 +21,10 @@ class Zerath extends React.Component {
                     <QuantityResource name="Potion of Healing" quantity="2"/>
                     <QuantityResource name="Dragon's Breath Pepper" quantity="1"/>
                     <QuantityResource name="Serpent Venom" quantity="1"/>
+                </Grouping>
+                <Grouping name="Death Saves">
+                    <ChargeResource name="Successes" charges="3"/>
+                    <ChargeResource name="Failures" charges="3"/>
                 </Grouping>
             </Player>
         )
