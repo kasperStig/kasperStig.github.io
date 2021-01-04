@@ -7,7 +7,7 @@ body {
 }
 .application .player {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  height: 100vh;
+  min-height: 100vh;
   width: 33%;
   padding: 0 10px;
 }
@@ -16,8 +16,17 @@ body {
   color: white;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: flex;
+  position: relative;
+}
+.application .player h1 .edit,
+.application .player h1 .done {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
 }
 .application .player .grouping {
+  margin-bottom: 15px;
   padding-bottom: 5px;
   color: white;
   border-radius: 2px;
@@ -25,8 +34,38 @@ body {
 }
 .application .player .grouping h2 {
   text-align: center;
-  margin-bottom: 0;
   padding-top: 10px;
+  margin: 0;
+  position: relative;
+}
+.application .player .grouping h2 input {
+  padding: 0px;
+  color: white;
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: inherit;
+  background: transparent;
+  border: none;
+  text-align: center;
+  font-weight: inherit;
+  text-decoration: underline;
+}
+.application .player .grouping h2 .edit,
+.application .player .grouping h2 .done {
+  position: absolute;
+  top: 12px;
+  cursor: pointer;
+}
+.application .player .grouping h2 .done {
+  right: 35px;
+}
+.application .player .grouping h2 .edit {
+  right: 10px;
+}
+.application .player .grouping h2 .delete {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  cursor: pointer;
 }
 .application .player .grouping h2:after {
   content: "";
@@ -36,62 +75,183 @@ body {
   margin-top: 10px;
 }
 .application .player .grouping .resource {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   padding: 5px;
+  position: relative;
+  height: 25px;
 }
 .application .player .grouping .resource .base {
   font-weight: bold;
   width: 50%;
   text-align: end;
 }
+.application .player .grouping .resource .charge {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  position: relative;
+}
+.application .player .grouping .resource .charge input {
+  appearance: none;
+  background-color: white;
+  border: 1px solid #cacece;
+  padding: 8px;
+  border-radius: 50%;
+  margin: 4.5px;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+}
+.application .player .grouping .resource input[type="text"] {
+  color: white;
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: inherit;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  text-align: end;
+  text-decoration: underline;
+  width: 100%;
+}
+.application .player .grouping .resource .transition-edit[type="text"] {
+  width: 40%;
+  text-align: start;
+}
 .application .player .grouping .resource .divider {
   padding: 0 5px;
+  font-family: 'Roboto Mono', monospace !important;
+  font-size: inherit;
 }
 .application .player .grouping .resource .transition,
 .application .player .grouping .resource .quantity {
   display: flex;
 }
-.application .player .grouping .resource .transition span,
-.application .player .grouping .resource .quantity span {
-  border: 1px solid white;
-  padding: 0 2px;
+.application .player .grouping .resource .transition strong,
+.application .player .grouping .resource .quantity strong,
+.application .player .grouping .resource .transition .material-icons,
+.application .player .grouping .resource .quantity .material-icons {
+  height: 25px;
+  text-align: center;
+}
+.application .player .grouping .resource .transition .material-icons,
+.application .player .grouping .resource .quantity .material-icons {
+  width: 25px;
 }
 .application .player .grouping .resource .button {
-  display: block;
   cursor: pointer;
-  padding: 0 2px;
-  font-weight: bolder;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.application .player .grouping .resource .edit,
+.application .player .grouping .resource .done {
+  position: absolute;
+}
+.application .player .grouping .resource .edit .material-icons,
+.application .player .grouping .resource .done .material-icons {
+  font-size: 18px;
+  cursor: pointer;
+}
+.application .player .grouping .resource .done {
+  right: 35px;
+  padding-top: 2px;
+}
+.application .player .grouping .resource .edit {
+  right: 10px;
+}
+.application .player .grouping .resource .delete {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
 }
 .application .player .grouping .resource:nth-of-type(1) {
   padding-top: 10px;
+}
+.application .player .grouping .group-edit {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-top: 10px;
+}
+.application .player .grouping .group-edit div {
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.application .player .grouping .group-edit div:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.application .player .player-edit {
+  color: white;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+}
+.application .player .player-edit div {
+  border-radius: 2px;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 7.5px 0;
+}
+.application .player .player-edit div:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .application .Zerath {
   background-color: #38006b;
 }
 .application .Zerath h1,
-.application .Zerath .grouping {
+.application .Zerath .grouping,
+.application .Zerath .player-edit div {
   background-color: #6a1b9a;
 }
 .application .Zerath .button:hover {
   color: #38006b;
 }
+.application .Zerath .charge input:checked {
+  background-color: #38006b !important;
+}
 .application .Osborn {
   background-color: #003300;
 }
 .application .Osborn h1,
-.application .Osborn .grouping {
+.application .Osborn .grouping,
+.application .Osborn .player-edit div {
   background-color: #1b5e20;
 }
 .application .Osborn .button:hover {
   color: #003300;
 }
+.application .Osborn .charge input:checked {
+  background-color: #003300 !important;
+}
 .application .Garnag {
   background-color: #7f0000;
 }
 .application .Garnag h1,
-.application .Garnag .grouping {
+.application .Garnag .grouping,
+.application .Garnag .player-edit div {
   background-color: #b71c1c;
 }
 .application .Garnag .button:hover {
   color: #7f0000;
+}
+.application .Garnag .charge input:checked {
+  background-color: #7f0000 !important;
 }

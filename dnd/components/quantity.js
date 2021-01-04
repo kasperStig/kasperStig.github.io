@@ -1,7 +1,9 @@
 class Quantity extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {current: this.props.quantity}
+        this.state = {
+            current: parseInt(this.props.quantity)
+        }
         this.decrease = this.decrease.bind(this);
         this.increase = this.increase.bind(this);
     }
@@ -25,9 +27,13 @@ class Quantity extends React.Component {
     render() {
         return (
             <div className="quantity">
-                <div className="button" onClick={this.decrease}>-</div> 
-                <span>{this.state.current}</span>
-                <div className="button" onClick={this.increase}>+</div>
+                <div className="button" onClick={this.decrease}>
+                    <span className="material-icons">remove</span>
+                </div> 
+                <strong>{this.state.current}</strong>
+                <div className="button" onClick={this.increase}>
+                    <span className="material-icons">add</span>
+                </div>
             </div>
         )
     }

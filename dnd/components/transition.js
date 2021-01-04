@@ -2,12 +2,14 @@ class Transition extends React.Component {
     constructor(props) {
         super(props);
         this.transitions = this.props.transition.split(',');
-        this.state = {current: this.transitions[0]}
-        this.decrease = this.decrease.bind(this);
-        this.increase = this.increase.bind(this);
+        this.state = {
+            current: this.transitions[0]
+        }
+        this.left = this.left.bind(this);
+        this.right = this.right.bind(this);
     }
 
-    decrease() {
+    right() {
         if(this.transitions.indexOf(this.state.current) === this.transitions.length - 1) {
             return;
         }
@@ -17,7 +19,7 @@ class Transition extends React.Component {
         });
     }
 
-    increase() {
+    left() {
         let transitionIndex = this.transitions.indexOf(this.state.current) - 1;
 
         if(transitionIndex < 0) {
@@ -32,9 +34,13 @@ class Transition extends React.Component {
     render() {
         return (
             <div className="transition">
-                <div className="button" onClick={this.decrease}>-</div> 
-                <span>{this.state.current}</span>
-                <div className="button" onClick={this.increase}>+</div>
+                <div className="button" onClick={this.left}>
+                    <span className="material-icons">chevron_left</span>
+                </div> 
+                <strong>{this.state.current}</strong>
+                <div className="button" onClick={this.right}>
+                    <span className="material-icons">chevron_right</span>
+                </div>
             </div>
         )
     }
