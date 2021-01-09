@@ -257,6 +257,27 @@ body {
 }
 .application .Monsters {
   background-color: #102027;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+}
+.application .Monsters .fold {
+  color: white;
+  transform: rotate(90deg);
+  background: #37474f;
+  position: absolute;
+  left: -32px;
+  top: 15%;
+  padding: 5px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+}
+.application .Monsters .Monsters.collapsed {
+  width: 5%;
+}
+.application .Monsters .Monsters.collapsed .grouping,
+.application .Monsters .Monsters.collapsed h1 {
+  display: none;
 }
 .application .Monsters h1,
 .application .Monsters .grouping,

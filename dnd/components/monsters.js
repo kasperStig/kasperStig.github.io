@@ -1,18 +1,29 @@
-class Player extends React.Component {
+class Monsters extends React.Component {
     constructor(props) {
         super(props);
+
+        var children = [];
+        if(typeof(this.props.children) !== 'undefined') {
+            children = children.concat(this.props.children);
+        }
         
         this.state = {
-            childComponents: [].concat(this.props.children),
+            childComponents: children,
             isEdit: false,
-            keyCount: this.props.children.length
+            keyCount: 0,
+            collapsed: this.props.collapsed === "true"
         }
 
         this.edit = this.edit.bind(this);
+        this.toggleCollapsed = this.toggleCollapsed.bind(this);
         this.addGrouping = this.addGrouping.bind(this);
         this.addGrouping = this.addGrouping.bind(this);
     }
 
+    toggleCollapsed() {
+        this.setState((state, props) => ({
+            collapsed: !state.collapsed  }));
+    }
 
     edit() {
         this.setState((state, props) => ({
@@ -30,7 +41,8 @@ class Player extends React.Component {
         let groupings = this.state.childComponents.map(child => React.cloneElement(child, { isEdit: this.state.isEdit, key: child.name }));
 
         return (
-            <div className={`player ${this.props.name}`}>
+            <div className={`player ${this.props.name} ${this.state.collapsed ? "collapsed" : ""}`}>
+               <div onClick={this.toggleCollapsed} className="fold">{this.props.name}</div> 
                 <h1>{this.props.name}
                 {this.state.isEdit &&  
                     <div onClick={this.edit} className="done">

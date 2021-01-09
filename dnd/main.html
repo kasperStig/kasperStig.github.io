@@ -25,6 +25,7 @@
     <script type="text/babel" src="components/app.js"></script>
     <script type="text/babel" src="components/player.js"></script>
     <script type="text/babel" src="components/grouping.js"></script>
+    <script type="text/babel" src="components/monsters.js"></script>
 
     <script type="text/babel" src="components/transition.js"></script>
     <script type="text/babel" src="components/charge.js"></script>
@@ -48,7 +49,7 @@
           <Zerath />
           <Osborn />
           <Garnag />
-          <Player name="Monsters"><Grouping name="Monster"/></Player>
+          <Monsters name="Monsters" collapsed="true"/>
         </App>,
         document.getElementById('root')
       );
