@@ -256,7 +256,7 @@ body {
   background-color: #7f0000 !important;
 }
 .application .Monsters.collapsed {
-  width: 3%;
+  width: 2%;
 }
 .application .Monsters.collapsed .grouping,
 .application .Monsters.collapsed h1 {
@@ -278,7 +278,7 @@ body {
   background: #37474f;
   position: absolute;
   left: -32px;
-  top: 15%;
+  top: 150px;
   padding: 5px;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
