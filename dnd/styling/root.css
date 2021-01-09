@@ -255,6 +255,18 @@ body {
 .application .Garnag .charge input:checked {
   background-color: #7f0000 !important;
 }
+.application .Monsters.collapsed {
+  width: 3%;
+}
+.application .Monsters.collapsed .grouping,
+.application .Monsters.collapsed h1 {
+  overflow: hidden;
+  opacity: 0;
+}
+.application .Monsters.collapsed .grouping div,
+.application .Monsters.collapsed h1 div {
+  display: none;
+}
 .application .Monsters {
   background-color: #102027;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -272,17 +284,13 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
 }
-.application .Monsters .Monsters.collapsed {
-  width: 5%;
-}
-.application .Monsters .Monsters.collapsed .grouping,
-.application .Monsters .Monsters.collapsed h1 {
-  display: none;
-}
 .application .Monsters h1,
 .application .Monsters .grouping,
 .application .Monsters .player-edit div {
   background-color: #37474f;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 .application .Monsters .button:hover {
   color: #102027;
