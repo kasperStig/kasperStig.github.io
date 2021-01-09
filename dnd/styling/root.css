@@ -289,7 +289,7 @@ body {
 .application .Monsters .player-edit div {
   background-color: #37474f;
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s linear;
   overflow: hidden;
 }
 .application .Monsters .button:hover {
