@@ -5,6 +5,8 @@ class Zerath extends React.Component {
                 <Grouping name="Resources">
                     <TransitionResource name="Ammunition" transition="d12,d10,d8,d6,d4,1,0"/> 
                     <ChargeResource name="Hit Die" charges="3" />
+                </Grouping>
+                <Grouping name="Class abilities">
                     <ChargeResource name="Bardic Inspiration" charges="3" />
                 </Grouping>
                 <Grouping name="Spells">
