@@ -79,12 +79,15 @@ body {
   display: flex;
   padding: 5px;
   position: relative;
-  height: fit-content;
+  height: 25px;
 }
 .application .player .grouping .resource .base {
   font-weight: bold;
   width: 50%;
   text-align: end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .application .player .grouping .resource .charge {
   width: 25px;
