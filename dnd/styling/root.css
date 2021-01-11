@@ -79,7 +79,7 @@ body {
   display: flex;
   padding: 5px;
   position: relative;
-  height: 25px;
+  height: fit-content;
 }
 .application .player .grouping .resource .base {
   font-weight: bold;
