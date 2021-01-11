@@ -18,10 +18,6 @@ class Garnag extends React.Component {
                     <QuantityResource name="Dragon's Breath Pepper" quantity="1"/>
                     <QuantityResource name="Grave Dust" quantity="1"/>
                 </Grouping>
-                <Grouping name="Death Saves">
-                    <ChargeResource name="Successes" charges="3"/>
-                    <ChargeResource name="Failures" charges="3"/>
-                </Grouping>
             </Player>
         )
     }

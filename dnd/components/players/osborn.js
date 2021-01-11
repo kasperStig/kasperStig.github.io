@@ -17,10 +17,6 @@ class Osborn extends React.Component {
                     <QuantityResource name="Potion of Healing" quantity="1"/>
                     <QuantityResource name="Serpent Venom" quantity="2"/>
                 </Grouping>
-                <Grouping name="Death Saves">
-                    <ChargeResource name="Successes" charges="3"/>
-                    <ChargeResource name="Failures" charges="3"/>
-                </Grouping>
             </Player>
         )
     }
