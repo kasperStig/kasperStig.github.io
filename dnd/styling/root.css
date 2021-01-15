@@ -165,6 +165,7 @@ body {
   user-select: none;
   /* Non-prefixed version, currently
                                                   supported by Chrome, Edge, Opera and Firefox */
+  transition: color 0.3s ease;
 }
 .application .player .grouping .resource .edit,
 .application .player .grouping .resource .done {
