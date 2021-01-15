@@ -11,7 +11,7 @@ class Grouping extends React.Component {
             heading: this.props.name,
             childComponents: initialComponents,
             keyCount: 0,
-            isDeleted: false
+            isDeleted: false,
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -19,6 +19,8 @@ class Grouping extends React.Component {
         this.addQuantity = this.addQuantity.bind(this);
         this.addTransition = this.addTransition.bind(this);
         this.delete = this.delete.bind(this);
+        this.dragEnter = this.dragEnter.bind(this);
+        this.allowDrop = this.allowDrop.bind(this);
     }
 
     delete(event) {
@@ -54,18 +56,51 @@ class Grouping extends React.Component {
           }));
     }
 
+    drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+
+    drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var draggedNode = document.getElementById(data);
+        draggedNode.classList.add('dragged');
+    
+       
+        var grouping = event.target.closest('.grouping');
+        grouping.classList.remove('draggedTo');
+        grouping.parentNode.insertBefore(draggedNode, grouping.nextSibling);
+    }
+
+    allowDrop(event) {
+        event.preventDefault();
+    }
+
+    dragEnter(event) {
+        var player = event.currentTarget.closest('.player');
+        for (var i = 0; i < player.childNodes.length; i++) {
+            if (player.childNodes[i].classList.contains("grouping") && player.childNodes[i].id !== event.currentTarget.id) {
+                player.childNodes[i].classList.remove('draggedTo');
+            }        
+        }   
+        
+        event.currentTarget.classList.add('draggedTo');;
+    }
 
     render() {
         if(this.state.isDeleted) {
             return null;
         }
 
-        let resources = this.state.childComponents.map(child => React.cloneElement(child, { isEdit: this.props.isEdit, key: child.name }));
+        let resources = this.state.childComponents.map(child => React.cloneElement(child, { isEdit: this.props.isEdit, key: child.props.name }));
 
         return (
-            <div className="grouping">
+            <div id={this.props.id} className="grouping" onDrop={this.drop} onDragOver={this.allowDrop} onDragEnter={this.dragEnter} onDragStart={this.drag} draggable={this.props.isEdit ? "true" : "false"}>
                  {this.props.isEdit &&  
-                    <h2>                    
+                    <h2>  
+                        <div className="grab">
+                            <span className="material-icons">drag_indicator</span>
+                        </div>             
                         <input type="text" value={this.state.heading} onChange={this.handleChange}></input>
                         <div onClick={this.delete} className="delete">
                             <span className="material-icons">delete_outline</span>

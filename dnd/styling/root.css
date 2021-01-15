@@ -1,6 +1,12 @@
 body {
   margin: 0;
 }
+.draggedTo {
+  border-bottom: 3px solid darkkhaki;
+}
+.dragged {
+  cursor: grabbing;
+}
 .application {
   display: flex;
   font-family: 'Roboto Mono', monospace;
@@ -71,6 +77,11 @@ body {
   right: 10px;
   top: 12px;
   cursor: pointer;
+}
+.application .player .grouping h2 .grab {
+  position: absolute;
+  left: 10px;
+  cursor: grab;
 }
 .application .player .grouping h2:after {
   content: "";

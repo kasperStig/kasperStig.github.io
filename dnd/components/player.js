@@ -26,11 +26,12 @@ class Player extends React.Component {
           }));
     }
 
+
     render() {
-        let groupings = this.state.childComponents.map(child => React.cloneElement(child, { isEdit: this.state.isEdit, key: child.name }));
+        let groupings = this.state.childComponents.map(child => React.cloneElement(child, { isEdit: this.state.isEdit, key: child.props.name, id: this.props.name + child.props.name }));
 
         return (
-            <div className={`player ${this.props.name}`}>
+            <div className={`player ${this.props.name}`} >
                 <h1>{this.props.name}
                 {this.state.isEdit &&  
                     <div onClick={this.edit} className="done">
