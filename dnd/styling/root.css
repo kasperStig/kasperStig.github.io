@@ -328,3 +328,8 @@ body {
 .application .Monsters .charge input:checked {
   background-color: #102027 !important;
 }
+.application .Monsters .edit:hover,
+.application .Monsters .done:hover,
+.application .Monsters .delete:hover {
+  color: #102027;
+}
