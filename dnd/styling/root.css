@@ -48,6 +48,7 @@ body {
   padding-top: 10px;
   margin: 0;
   position: relative;
+  font-weight: normal;
 }
 .application .player .grouping h2 input {
   padding: 0px;
@@ -98,7 +99,7 @@ body {
   height: 25px;
 }
 .application .player .grouping .resource .base {
-  font-weight: bold;
+  font-weight: normal;
   width: 50%;
   text-align: end;
   text-overflow: ellipsis;
@@ -156,6 +157,7 @@ body {
 .application .player .grouping .resource .quantity .material-icons {
   height: 25px;
   text-align: center;
+  font-weight: normal;
 }
 .application .player .grouping .resource .transition .material-icons,
 .application .player .grouping .resource .quantity .material-icons {
