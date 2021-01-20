@@ -14,8 +14,9 @@ class Osborn extends React.Component {
                     <ChargeResource name="Ring of Teleportation" charges="2"/>
                 </Grouping>
                 <Grouping name="Consumeables">
-                    <QuantityResource name="Potion of Healing" quantity="1"/>
                     <QuantityResource name="Serpent Venom" quantity="2"/>
+                    <QuantityResource name="Grave Dust" quantity="1"/>
+                    <QuantityResource name="Dragon's Breath Pepper" quantity="1"/>
                 </Grouping>
             </Player>
         )

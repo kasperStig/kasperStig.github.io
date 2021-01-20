@@ -16,11 +16,11 @@ class Garnag extends React.Component {
                 </Grouping>
                 <Grouping name="Items">
                     <ChargeResource name="Yohn's Sword of Retribution" charges="3"/>
+                    <ChargeResource name="Cape of Hellish Resilience" charges="1"/>
                 </Grouping>
                 <Grouping name="Consumeables">
                     <QuantityResource name="Potion of Healing" quantity="2"/>
                     <QuantityResource name="Dragon's Breath Pepper" quantity="1"/>
-                    <QuantityResource name="Grave Dust" quantity="1"/>
                 </Grouping>
             </Player>
         )

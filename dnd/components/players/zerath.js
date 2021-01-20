@@ -15,7 +15,6 @@ class Zerath extends React.Component {
                 </Grouping>
                 <Grouping name="Items">
                     <ChargeResource name="Ring of Rebellion" charges="1"/>
-                    <ChargeResource name="Cape of Hellish Resilience" charges="1"/>
                     <ChargeResource name="Vox Populi" charges="1"/>
                     <TransitionResource name="Vox Populi Damage Type" transition="Piercing, Cold, Fire, Lightning, Acid, Necrotic"/> 
                 </Grouping>
