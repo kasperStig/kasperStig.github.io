@@ -1,9 +1,17 @@
 class ChargeResource extends React.Component {
     constructor(props) {
         super(props);
+
+        let s = 0;
+        if(typeof(this.props.spend) !== 'undefined') {
+            s = parseInt(this.props.spend);
+        }
+
         this.state = {
             charges: parseInt(this.props.charges),
+            spend: s,
         }
+
         this.decrease = this.decrease.bind(this);
         this.increase = this.increase.bind(this);
     }
@@ -23,7 +31,7 @@ class ChargeResource extends React.Component {
     render() {
         const chargesComponents = [];
         for (let index = 0; index < this.state.charges; index++) {
-            chargesComponents.push(<Charge key={index} />);
+            chargesComponents.push(<Charge key={index} expend={index < this.state.spend} />);
         }
         return (
             <Resource name={this.props.name} isEdit={this.props.isEdit}> 

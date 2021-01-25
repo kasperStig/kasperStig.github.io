@@ -1,10 +1,17 @@
 class Transition extends React.Component {
     constructor(props) {
         super(props);
+
         this.transitions = this.props.transition.split(',');
-        this.state = {
-            current: this.transitions[0]
+        let c = this.transitions[0];
+        if(typeof(this.props.current) !== 'undefined') {
+            c = this.props.current;
         }
+
+        this.state = {
+            current: c
+        }
+        
         this.left = this.left.bind(this);
         this.right = this.right.bind(this);
     }

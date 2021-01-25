@@ -2,7 +2,7 @@ class Charge extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: this.props.expend
         }
         this.handleChange = this.handleChange.bind(this);
     }
