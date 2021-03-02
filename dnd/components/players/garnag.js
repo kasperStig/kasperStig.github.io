@@ -5,6 +5,7 @@ class Garnag extends React.Component {
                 <Grouping name="Resources">
                     <TransitionResource name="Ammunition" transition="d12,d10,d8,d6,d4,1,0" /> 
                     <ChargeResource name="Hit Die" charges="4" />
+                    <QuantityResource name="Gold" quantity="307" />
                 </Grouping>
                 <Grouping name="Racial abilities">
                     <ChargeResource name="Relentless Endurance" charges="1"  />

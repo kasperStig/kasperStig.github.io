@@ -7,7 +7,7 @@ class Zerath extends React.Component {
                     <ChargeResource name="Hit Die" charges="4"  />
                 </Grouping>
                 <Grouping name="Class abilities">
-                    <ChargeResource name="Bardic Inspiration" charges="4" />
+                    <ChargeResource name="Bardic Inspiration" charges="3" />
                     <ChargeResource name="Fey Teleportation" charges="1" />
                 </Grouping>
                 <Grouping name="Spells">
