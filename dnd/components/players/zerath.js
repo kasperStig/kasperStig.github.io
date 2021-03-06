@@ -7,7 +7,7 @@ class Zerath extends React.Component {
                     <ChargeResource name="Hit Die" charges="4"  />
                 </Grouping>
                 <Grouping name="Class abilities">
-                    <ChargeResource name="Bardic Inspiration" charges="3" />
+                    <ChargeResource name="Bardic Inspiration / Cutting Words" charges="4" />
                     <ChargeResource name="Fey Teleportation" charges="1" />
                 </Grouping>
                 <Grouping name="Spells">
@@ -15,7 +15,7 @@ class Zerath extends React.Component {
                     <ChargeResource name="2nd level" charges="3"  />
                 </Grouping>
                 <Grouping name="Items">
-                    <ChargeResource name="Ring of Rebellion" charges="1"/>
+                    <ChargeResource name="Ring of Rebellion" charges="2"/>
                     <ChargeResource name="Vox Populi" charges="1" />
                     <TransitionResource name="Vox Populi Damage Type" transition="Piercing, Cold, Fire, Lightning, Acid, Necrotic"/> 
                     <ChargeResource name="Box of Beasts" charges="1" />
