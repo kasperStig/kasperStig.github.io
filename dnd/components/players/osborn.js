@@ -12,6 +12,7 @@ class Osborn extends React.Component {
                 <Grouping name="Items">
                     <ChargeResource name="Lucian's Gift" charges="1"/>
                     <ChargeResource name="Ring of Teleportation" charges="2"/>
+                    <ChargeResource name="Cape of Hellish Resilience (Healing)" charges="1"/>
                 </Grouping>
                 <Grouping name="Consumeables">
                     <QuantityResource name="Serpent Venom" quantity="2"/>
