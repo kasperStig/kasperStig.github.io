@@ -18,9 +18,7 @@ class Transition extends React.Component {
     }
 
     reset() {
-        this.setState({
-            current: this.transitions[0]
-        });
+       // this.setState({ current: this.transitions[0] });
     }
 
     componentDidMount() {
