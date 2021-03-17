@@ -2,18 +2,29 @@ class ChargeResource extends React.Component {
     constructor(props) {
         super(props);
 
-        let s = 0;
-        if(typeof(this.props.spend) !== 'undefined') {
-            s = parseInt(this.props.spend);
-        }
-
         this.state = {
-            charges: parseInt(this.props.charges),
-            spend: s,
+            charges: this.props.charges,
+            spend: this.props.spend,
         }
 
         this.decrease = this.decrease.bind(this);
         this.increase = this.increase.bind(this);
+        this.recharge = this.recharge.bind(this);
+        this.chargeClicked = this.chargeClicked.bind(this);
+    }
+
+    recharge() {
+        this.setState({ spend: 0 });
+    }
+
+    componentDidMount() {
+        window.addEventListener(this.props.rechargeEvent, this.recharge)
+        window.addEventListener("longRest", this.recharge)
+    }
+
+    chargeClicked(wasChecked) {
+        let spendDelta = wasChecked ? 1 : -1;
+        this.setState(state => ({ spend: state.spend + spendDelta }));
     }
 
     decrease() {
@@ -31,7 +42,7 @@ class ChargeResource extends React.Component {
     render() {
         const chargesComponents = [];
         for (let index = 0; index < this.state.charges; index++) {
-            chargesComponents.push(<Charge key={index} expend={index < this.state.spend} />);
+            chargesComponents.push(<Charge key={index} onClick={this.chargeClicked} expend={index < this.state.spend} />);
         }
         return (
             <Resource name={this.props.name} isEdit={this.props.isEdit}> 
@@ -45,4 +56,9 @@ class ChargeResource extends React.Component {
             </Resource>
         )
     }
+}
+
+ChargeResource.defaultProps = {
+    spend: 0,
+    charges: 1
 }

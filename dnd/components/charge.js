@@ -1,21 +1,17 @@
 class Charge extends React.Component { 
     constructor(props) {
         super(props);
-        this.state = {
-            checked: this.props.expend
-        }
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange() {
-        this.setState((state, props) => ({
-            checked: !state.checked  })
-        );
+        this.props.onClick(!this.props.expend);
     }
+    
     render() {
         return (
             <div className="charge">
-                <input type="checkbox" checked={this.state.checked} onChange={this.handleChange}></input>
+                <input type="checkbox" checked={this.props.expend} onChange={this.handleChange}></input>
             </div>
         )
     }
