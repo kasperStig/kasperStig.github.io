@@ -8,7 +8,7 @@ class Garnag extends React.Component {
                     <QuantityResource name="Gold" quantity="187" />
                 </Grouping>
                 <Grouping name="Racial abilities">
-                    <ChargeResource name="Relentless Endurance" charges={4}  />
+                    <ChargeResource name="Relentless Endurance" charges={1}  />
                 </Grouping>
                 <Grouping name="Class abilities">
                     <ChargeResource name="Maneuvers" charges={4} rechargeEvent="shortRest" />

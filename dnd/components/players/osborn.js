@@ -4,7 +4,7 @@ class Osborn extends React.Component {
             <Player name="Osborn">
                 <Grouping name="Resources">
                     <TransitionResource name="Ammunition" transition="d12,d10,d8,d6,d4,1,0" /> 
-                    <ChargeResource name="Hit Die" charges={4}  />
+                    <ChargeResource name="Hit Die" charges={4} />
                 </Grouping>
                 <Grouping name="Spells">
                     <ChargeResource name="1st level" charges={3} />
