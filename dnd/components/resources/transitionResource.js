@@ -17,7 +17,7 @@ class TransitionResource extends React.Component {
         return (
             <Resource name={this.props.name} isEdit={this.props.isEdit}> 
                 {!this.props.isEdit &&
-                    <Transition transition={this.state.transition} current={this.props.current}/>
+                    <Transition transition={this.state.transition} current={this.props.current} player={this.props.player} />
                 } 
                 {this.props.isEdit && 
                      <input className="transition-edit" type="text" value={this.state.transition} onChange={this.handleChange}></input>

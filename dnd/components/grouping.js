@@ -92,7 +92,7 @@ class Grouping extends React.Component {
             return null;
         }
 
-        let resources = this.state.childComponents.map(child => React.cloneElement(child, { isEdit: this.props.isEdit, key: child.props.name }));
+        let resources = this.state.childComponents.map(child => React.cloneElement(child, { player: this.props.player, isEdit: this.props.isEdit, key: child.props.name }));
 
         return (
             <div id={this.props.id} className="grouping" onDrop={this.drop} onDragOver={this.allowDrop} onDragEnter={this.dragEnter} onDragStart={this.drag} draggable={this.props.isEdit ? "true" : "false"}>

@@ -14,6 +14,17 @@ class Transition extends React.Component {
         
         this.left = this.left.bind(this);
         this.right = this.right.bind(this);
+        this.reset = this.reset.bind(this);
+    }
+
+    reset() {
+        this.setState({
+            current: this.transitions[0]
+        });
+    }
+
+    componentDidMount() {
+        document.getElementById(this.props.player).addEventListener("longRest", this.reset)
     }
 
     right() {
