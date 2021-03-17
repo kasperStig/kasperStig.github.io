@@ -9,17 +9,22 @@ class ChargeResource extends React.Component {
 
         this.decrease = this.decrease.bind(this);
         this.increase = this.increase.bind(this);
-        this.recharge = this.recharge.bind(this);
+        this.onLongRest = this.onLongRest.bind(this);
         this.chargeClicked = this.chargeClicked.bind(this);
+        this.onShortRest = this.onShortRest.bind(this);
     }
 
-    recharge() {
-        this.setState({ spend: 0 });
+    onShortRest() {
+        this.setState(state => ({ spend: this.props.onShortRest(state.spend) }));
+    }
+
+    onLongRest() {
+        this.setState(state => ({ spend: this.props.onLongRest(state.spend) }));
     }
 
     componentDidMount() {
-        document.getElementById(this.props.player).addEventListener(this.props.rechargeEvent, this.recharge)
-        document.getElementById(this.props.player).addEventListener("longRest", this.recharge)
+        document.getElementById(this.props.player).addEventListener("longRest", this.onLongRest)
+        document.getElementById(this.props.player).addEventListener("shortRest", this.onShortRest)
     }
 
     chargeClicked(wasChecked) {
@@ -60,5 +65,7 @@ class ChargeResource extends React.Component {
 
 ChargeResource.defaultProps = {
     spend: 0,
-    charges: 1
+    charges: 1,
+    onShortRest: (_) => _,
+    onLongRest: (_) => 0
 }
