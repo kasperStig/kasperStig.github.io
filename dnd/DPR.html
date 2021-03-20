@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>D&D Resource Manager</title>
+
+    <!-- Load Roboto Mono font from Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Load Bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+      <!-- Load icons from Google -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Load development react javascript -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Load in-browser Babel handling of JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Main css file -->
+    <link rel="stylesheet" type="text/css" href="styling/dpr.css" />
+
+    <!-- React components -->
+    <script type="text/babel" src="components/app.js"></script>
+    <script type="text/babel" src="components//dpr/dpr.js"></script>
+    <script type="text/babel" src="components//dpr/input.js"></script>
+    <script type="text/babel" src="components//dpr/display.js"></script>
+    <script type="text/babel" src="components//dpr/container.js"></script>
+    <script type="text/babel" src="components//dpr/advantage.js"></script>
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      ReactDOM.render(
+        <App>
+          <Container />
+        </App>,
+        document.getElementById('root')
+      );
+
+    </script>
+     <script>
+      window.onbeforeunload = function() { return true; }
+    </script>
+  </body>
+</html>
