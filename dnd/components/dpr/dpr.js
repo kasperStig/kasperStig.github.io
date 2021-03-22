@@ -39,20 +39,22 @@ class DPR extends React.Component {
         }
 
         this.setState(state => ({ 
-            TargetAC: useNewValue ? ac : state.targetAc,
+            TargetAC: useNewValue ? ac : state.TargetAC,
             HitChance: this.getHitChance(useNewValue ? ac : state.TargetAC, state.HitModifier, state.Advantage)
         }));  
     }
 
     handleHitModChange(newHitMod) {
+        console.log(newHitMod)
         let hitMod = parseInt(newHitMod);
         let useNewValue = true;
         if(isNaN(hitMod)) {
             useNewValue = false;
         }
+        console.log(useNewValue)
 
         this.setState(state => ({ 
-            HitModifier:  useNewValue ? hitMod : state.hitMod,
+            HitModifier:  useNewValue ? hitMod : state.HitModifier,
             HitChance: this.getHitChance(state.TargetAC, useNewValue ? hitMod : state.HitModifier, state.Advantage)
         }));  
     }
@@ -114,7 +116,7 @@ class DPR extends React.Component {
        
         this.setState({ 
             DicePerHit: value,
-            AverageDiceDamagePerHit: averageDamage 
+            AverageDiceDamagePerHit: averageDamage
         });  
     }
 
@@ -169,7 +171,7 @@ class DPR extends React.Component {
                 <Display value={(this.state.HitChance * 100).toFixed(0) + '%' || 0} />
                 <Display value={(this.state.CritChance * this.state.AverageDiceDamagePerHit + this.state.HitChance * (this.state.AverageDiceDamagePerHit + this.state.DamageBonusPerHit)).toFixed(2)} />
                 {this.props.id > 1 && <div className="col">
-                    <button onClick={this.delete}>Delete</button>
+                    <button type="button" className="btn btn-danger" onClick={this.delete}>Delete</button>
                 </div>
                 }
                 {this.props.id <= 1 && <div className="col"></div>}

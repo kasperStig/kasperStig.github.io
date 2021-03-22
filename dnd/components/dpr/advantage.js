@@ -3,25 +3,32 @@ class Advantage extends React.Component {
         super(props);
 
         this.state = { 
-            value: 0
+            value: "0"
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
-        this.props.onChange(event.target.value);
+    handleClick(event) {
+        this.setState(state => ({value: state.value === event.target.value ? "0" : event.target.value}), () => {this.props.onChange(this.state.value)});
     }
+
 
     render() {
         return (
-            <div value={this.state.value} className={this.props.col} onChange={this.handleChange}>
-               <select>
-                    <option value={0}>None</option>
-                    <option value={1}>Advantage</option>
-                    <option value={-1}>Disadvantage</option>
-               </select>
+            <div className={this.props.col} >
+                <div className="row">
+                    <div className="col-6 text-center">
+                        <label>
+                            <input type="radio" value="1" checked={this.state.value === "1"} onChange={() => {}} onClick={this.handleClick} />
+                        </label>
+                    </div>
+                    <div className="col-6 text-center">
+                        <label>
+                            <input type="radio" value="-1" checked={this.state.value === "-1"} onChange={() => {}} onClick={this.handleClick} />
+                        </label>
+                    </div>
+                </div>
             </div>
         );
     }

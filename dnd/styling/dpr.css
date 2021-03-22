@@ -1,4 +1,18 @@
-input,
-select {
+.dpr-wrapper {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 2px;
+}
+.dpr-wrapper input {
   width: 100%;
+  border-radius: 2px;
+  border: 1px solid black;
+  vertical-align: middle;
+}
+.dpr-wrapper input[type="radio"] {
+  cursor: pointer;
+}
+.dpr-wrapper .btn-danger {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 100%;
 }

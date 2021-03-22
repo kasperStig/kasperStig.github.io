@@ -27,23 +27,24 @@ class Container extends React.Component {
     render(){
 
         return (
-            <div className="row">
-                <div className="row">
+            <div className="col p-4 mt-4 dpr-wrapper">
+                <div className="row header">
                     <div className="col-2">Label</div>
                     <div className="col-1">Target AC</div>
                     <div className="col-1">Hit mod</div>
                     <div className="col-1">Crit Range</div>
                     <div className="col-1">Dice dmg</div>
-                    <div className="col-1">Bonus dmg</div>
-                    <div className="col-2">Advantage</div>
+                    <div className="col-1">Dmg mod</div>
+                    <div className="col-1">Advantage</div>
+                    <div className="col-1">Disadvantage</div>
                     <div className="col-1">Hit chance</div>
                     <div className="col-1">Avg dpr</div>
                     <div className="col-1"></div>
                 </div>
                 {this.state.rows}
-                <div className="row pt-3">
+                <div className="row footer pt-3">
                     <div className="col-2">
-                        <button onClick={this.addRow}>Add row</button>
+                        <button type="button" className="btn btn-success" onClick={this.addRow}>Add row</button>
                     </div>
                 </div>
                 
