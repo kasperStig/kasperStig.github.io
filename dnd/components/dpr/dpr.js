@@ -32,16 +32,28 @@ class DPR extends React.Component {
     }
 
     handleACChange(newAC) {
+        let ac = parseInt(newAC);
+        let useNewValue = true;
+        if(isNaN(ac)) {
+            useNewValue = false;
+        }
+
         this.setState(state => ({ 
-            TargetAC: parseInt(newAC),
-            HitChance: this.getHitChance(parseInt(newAC), state.HitModifier, state.Advantage)
+            TargetAC: useNewValue ? ac : state.targetAc,
+            HitChance: this.getHitChance(useNewValue ? ac : state.TargetAC, state.HitModifier, state.Advantage)
         }));  
     }
 
     handleHitModChange(newHitMod) {
+        let hitMod = parseInt(newHitMod);
+        let useNewValue = true;
+        if(isNaN(hitMod)) {
+            useNewValue = false;
+        }
+
         this.setState(state => ({ 
-            HitModifier: parseInt(newHitMod),
-            HitChance: this.getHitChance(state.TargetAC, parseInt(newHitMod), state.Advantage)
+            HitModifier:  useNewValue ? hitMod : state.hitMod,
+            HitChance: this.getHitChance(state.TargetAC, useNewValue ? hitMod : state.HitModifier, state.Advantage)
         }));  
     }
 
@@ -94,7 +106,6 @@ class DPR extends React.Component {
     }
 
     handleDamageDiceChange(value) {
-
         let averageDamage = 0;
         let parts = value.split('+');
         for (let index = 0; index < parts.length; index++) {
@@ -108,7 +119,12 @@ class DPR extends React.Component {
     }
 
     handleDamageBonusChange(value) {
-        this.setState({ DamageBonusPerHit: parseInt(value) });  
+        let damageMod = parseInt(value);
+        let useNewValue = true;
+        if(isNaN(damageMod)) {
+            useNewValue = false;
+        }
+        this.setState(state => ({ DamageBonusPerHit: useNewValue ? damageMod : state.DamageBonusPerHit }));  
     }
 
     getHitChance(targetAc, hitMod, adv) {
