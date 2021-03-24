@@ -10,6 +10,8 @@
 }
 .dpr-wrapper input[type="radio"] {
   cursor: pointer;
+  width: 12px;
+  height: 12px;
 }
 .dpr-wrapper .btn-danger {
   padding-top: 0;
