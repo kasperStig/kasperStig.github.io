@@ -14,9 +14,15 @@ class Osborn extends React.Component {
                     <ChargeResource name="Ring of Teleportation" charges={2} onShortRest={(_) => 0} />
                     <ChargeResource name="Cape of Hellish Resilience (Healing)" charges={1} onShortRest={(_) => 0} />
                 </Grouping>
+                <Grouping name="Smithing">
+                    <QuantityResource name="Pinning Shot" quantity="1"/>
+                    <QuantityResource name="Wounding Shot" quantity="1"/>
+                </Grouping>
                 <Grouping name="Consumeables">
                     <QuantityResource name="Serpent Venom" quantity="2"/>
                     <QuantityResource name="Grave Dust" quantity="1"/>
+                    <QuantityResource name="Healing Potion" quantity="1"/>
+                    <QuantityResource name="Security Mega Drone Ray" quantity="1"/>
                 </Grouping>
             </Player>
         )

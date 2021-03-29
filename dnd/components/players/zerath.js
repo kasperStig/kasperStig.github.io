@@ -7,7 +7,9 @@ class Zerath extends React.Component {
                     <ChargeResource name="Hit Die" charges={4} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
                 </Grouping>
                 <Grouping name="Class abilities">
-                    <ChargeResource name="Bardic Inspiration" charges={4} />
+                    <ChargeResource name="Bardic Inspiration" charges={4} spend={1}/>
+                </Grouping>
+                <Grouping name="Racial abilities">
                     <ChargeResource name="Fey Teleportation" charges={1} />
                 </Grouping>
                 <Grouping name="Spells">
@@ -21,9 +23,14 @@ class Zerath extends React.Component {
                     <ChargeResource name="Vox Populi" charges={1} />
                     <TransitionResource name="Vox Populi Damage Type" transition="Piercing, Cold, Fire, Lightning, Acid, Necrotic"/> 
                 </Grouping>
+                <Grouping name="Smithing">
+                    <QuantityResource name="Pinning Shot" quantity="1"/>
+                    <QuantityResource name="Perfectly Balanced" quantity="2"/>
+                </Grouping>
                 <Grouping name="Consumeables">
                     <QuantityResource name="Dragon's Breath Pepper" quantity="1"/>
                     <QuantityResource name="Serpent Venom" quantity="1"/>
+                    <QuantityResource name="Security Mega Drone Ray" quantity="1"/>
                 </Grouping>
             </Player>
         )
