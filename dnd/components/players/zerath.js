@@ -25,7 +25,7 @@ class Zerath extends React.Component {
                 </Grouping>
                 <Grouping name="Smithing">
                     <QuantityResource name="Pinning Shot" quantity="1"/>
-                    <QuantityResource name="Perfectly Balanced" quantity="2"/>
+                    <QuantityResource name="Perfectly Balanced" quantity="1"/>
                 </Grouping>
                 <Grouping name="Consumeables">
                     <QuantityResource name="Dragon's Breath Pepper" quantity="1"/>

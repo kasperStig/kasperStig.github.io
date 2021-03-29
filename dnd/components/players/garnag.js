@@ -23,7 +23,7 @@ class Garnag extends React.Component {
                     <ChargeResource name="Ring of Spell Storing" charges={3} spend={3} onLongRest={(c) => c} /> 
                 </Grouping>
                 <Grouping name="Smithing">
-                    <QuantityResource name="Sharpened Blade" quantity="2"/>
+                    <QuantityResource name="Sharpened Blade" quantity="1"/>
                 </Grouping>
                 <Grouping name="Consumeables">
                     <QuantityResource name="Healing Potion" quantity="1"/>
