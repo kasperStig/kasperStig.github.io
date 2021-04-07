@@ -3,9 +3,9 @@ class Zerath extends React.Component {
         return (
             <Player name="Zerath">
                 <Grouping name="Resources">
-                    <ChargeResource name="Inspiration" charges={1} onLongRest={(c) => c} /> 
                     <TransitionResource name="Ammunition" transition="d12,d10,d8,d6,d4,1,0" /> 
                     <ChargeResource name="Hit Die" charges={4} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
+                    <ChargeResource name="Inspiration" charges={1} onLongRest={(c) => c} /> 
                 </Grouping>
                 <Grouping name="Racial abilities">
                     <ChargeResource name="Fey Teleportation" charges={1} />
