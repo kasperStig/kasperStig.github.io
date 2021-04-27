@@ -11,7 +11,7 @@ class Osborn extends React.Component {
                     <ChargeResource name="1st level" charges={3} spend={2}/>
                 </Grouping>
                 <Grouping name="Items">
-                    <ChargeResource name="Lucian's Gift" charges={1} spend={1} />
+                    <ChargeResource name="Lucian's Gift" charges={2} spend={1} />
                     <ChargeResource name="Ring of Teleportation" charges={2} onShortRest={(_) => 0} />
                     <ChargeResource name="Cape of Hellish Resilience (Healing)" charges={1} onShortRest={(_) => 0} />
                 </Grouping>
