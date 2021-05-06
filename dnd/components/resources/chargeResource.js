@@ -23,8 +23,10 @@ class ChargeResource extends React.Component {
     }
 
     componentDidMount() {
-        document.getElementById(this.props.player).addEventListener("longRest", this.onLongRest)
-        document.getElementById(this.props.player).addEventListener("shortRest", this.onShortRest)
+        if(typeof(this.props.player) !== 'undefined') {
+            document.getElementById(this.props.player).addEventListener("longRest", this.onLongRest)
+            document.getElementById(this.props.player).addEventListener("shortRest", this.onShortRest)
+        }
     }
 
     chargeClicked(wasChecked) {

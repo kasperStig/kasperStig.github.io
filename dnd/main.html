@@ -49,7 +49,11 @@
           <Zerath />
           <Osborn />
           <Garnag />
-          <Monsters name="Monsters" collapsed="true"/>
+          <Monsters name="Monsters" collapsed="true">
+            <Grouping name="Abbadon">
+              <ChargeResource name="1st level" charges={3} />
+            </Grouping>
+          </Monsters>
         </App>,
         document.getElementById('root')
       );

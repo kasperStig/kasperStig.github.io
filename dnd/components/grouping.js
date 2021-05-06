@@ -38,21 +38,21 @@ class Grouping extends React.Component {
     addCharge() {
         this.setState((state, props) => ({
             keyCount: state.keyCount + 1,
-            childComponents: state.childComponents.concat(<ChargeResource key={state.keyCount} name="New charge resource" charges="1"/>),
+            childComponents: state.childComponents.concat(<ChargeResource key={state.keyCount} name={`Charge resource ${state.keyCount}`} charges={1} />),
           }));
     }
 
     addTransition() {
         this.setState((state, props) => ({
             keyCount: state.keyCount + 1,
-            childComponents: state.childComponents.concat(<TransitionResource key={state.keyCount} name="New transition resource" transition="0"/>),
+            childComponents: state.childComponents.concat(<TransitionResource key={state.keyCount} name={`Transition resource ${state.keyCount}`} transition="0"/>),
           }));
     }
 
     addQuantity() {
         this.setState((state, props) => ({
             keyCount: state.keyCount + 1,
-            childComponents: state.childComponents.concat(<QuantityResource key={state.keyCount} name="New quantity resource" quantity="0"/>),
+            childComponents: state.childComponents.concat(<QuantityResource key={state.keyCount} name={`Quantity resource ${state.keyCount}`} quantity="0"/>),
           }));
     }
 
