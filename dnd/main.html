@@ -51,7 +51,9 @@
           <Garnag />
           <Monsters name="Monsters" collapsed="true">
             <Grouping name="Abbadon">
-              <ChargeResource name="1st level" charges={3} />
+              <ChargeResource name="Hit Die" charges={4}  onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1}/>
+              <ChargeResource name="1st level spells slots" charges={3} />
+              <ChargeResource name="Inspiration" charges={1} />
             </Grouping>
           </Monsters>
         </App>,
