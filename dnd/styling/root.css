@@ -303,6 +303,26 @@ body {
 .application .Garnag .delete:hover {
   color: #7f0000;
 }
+.application .Hitler {
+  background-color: #ff5722;
+}
+.application .Hitler h1,
+.application .Hitler .grouping,
+.application .Hitler .player-edit div,
+.application .Hitler .rest div {
+  background-color: #ff8a50;
+}
+.application .Hitler .button:hover {
+  color: #ff5722;
+}
+.application .Hitler .charge input:checked {
+  background-color: #ff5722 !important;
+}
+.application .Hitler .edit:hover,
+.application .Hitler .done:hover,
+.application .Hitler .delete:hover {
+  color: #ff5722;
+}
 .application .Monsters.collapsed {
   width: 2%;
 }
