@@ -4,7 +4,7 @@ class Garnag extends React.Component {
             <Player name="Garnag">
                 <Grouping name="Resources">
                     <TransitionResource name="Ammunition" transition="d12,d10,d8,d6,d4,1,0" /> 
-                    <ChargeResource name="Hit Die" charges={4} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
+                    <ChargeResource name="Hit Die" charges={5} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
                     <ChargeResource name="Inspiration" charges={1} onLongRest={(c) => c} /> 
                     <QuantityResource name="Gold" quantity={372} />
                 </Grouping>

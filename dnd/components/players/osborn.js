@@ -4,11 +4,12 @@ class Osborn extends React.Component {
             <Player name="Osborn">
                 <Grouping name="Resources">
                     <TransitionResource name="Ammunition" transition="d12,d10,d8,d6,d4,1,0" /> 
-                    <ChargeResource name="Hit Die" charges={4} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
+                    <ChargeResource name="Hit Die" charges={5} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
                     <ChargeResource name="Inspiration" charges={1} onLongRest={(c) => c} /> 
                 </Grouping>
                 <Grouping name="Spells">
-                    <ChargeResource name="1st level" charges={3}/>
+                    <ChargeResource name="1st level" charges={4}/>
+                    <ChargeResource name="2nd level" charges={2}/>
                 </Grouping>
                 <Grouping name="Items">
                     <ChargeResource name="Lucian's Gift" charges={2}  />
