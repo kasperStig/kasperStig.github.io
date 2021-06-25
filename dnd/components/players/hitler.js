@@ -3,7 +3,7 @@ class Hitler extends React.Component {
         return (
             <Player name="Hitler">
                 <Grouping name="Resources">
-                    <ChargeResource name="Hit Die" charges={5} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
+                    <ChargeResource name="Hit Die" charges={5} spend={2} onShortRest={(spend) => spend - 1 < 0 ? 0 : spend - 1} />
                     <ChargeResource name="Inspiration" charges={1} onLongRest={(c) => c} /> 
                 </Grouping>
                 <Grouping name="Racial abilities">
@@ -11,7 +11,7 @@ class Hitler extends React.Component {
                 </Grouping>
                 <Grouping name="Spells">
                     <ChargeResource name="1st level" charges={4}  />
-                    <ChargeResource name="2nd level" charges={2} />
+                    <ChargeResource name="2nd level" charges={2} spend={2} />
                 </Grouping>
             </Player>
         )
