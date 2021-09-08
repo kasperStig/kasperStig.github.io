@@ -263,6 +263,26 @@ body {
 .application .Zerath .delete:hover {
   color: #38006b;
 }
+.application .Badoosh {
+  background-color: #002f6c;
+}
+.application .Badoosh h1,
+.application .Badoosh .grouping,
+.application .Badoosh .player-edit div,
+.application .Badoosh .rest div {
+  background-color: #01579b;
+}
+.application .Badoosh .button:hover {
+  color: #002f6c;
+}
+.application .Badoosh .charge input:checked {
+  background-color: #002f6c !important;
+}
+.application .Badoosh .edit:hover,
+.application .Badoosh .done:hover,
+.application .Badoosh .delete:hover {
+  color: #002f6c;
+}
 .application .Osborn {
   background-color: #003300;
 }
