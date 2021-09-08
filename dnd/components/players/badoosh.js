@@ -16,7 +16,7 @@ class Badoosh extends React.Component {
                 </Grouping>
                 <Grouping name="Items">
                     <ChargeResource name="Shard From The Stars" charges={1} />
-                    <ChargeResource name="Cape of Hellish Resilience (Healing)" charges={1} spend={1} onShortRest={(_) => 0} />     
+                    <ChargeResource name="Cape of Hellish Resilience (Healing)" charges={1} onShortRest={(_) => 0} />     
                 </Grouping>
             </Player>
         )
