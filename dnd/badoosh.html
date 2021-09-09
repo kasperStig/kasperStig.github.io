@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>D&D Resource Manager</title>
+
+    <!-- Load Roboto Mono font from Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+      <!-- Load icons from Google -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Load development react javascript -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Load in-browser Babel handling of JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Main css file -->
+    <link rel="stylesheet" type="text/css" href="styling/root.css" />
+
+    <!-- React components -->
+    <script type="text/babel" src="components/app.js"></script>
+    <script type="text/babel" src="components/player.js"></script>
+    <script type="text/babel" src="components/grouping.js"></script>
+    <script type="text/babel" src="components/monsters.js"></script>
+
+    <script type="text/babel" src="components/rest.js"></script>
+    <script type="text/babel" src="components/transition.js"></script>
+    <script type="text/babel" src="components/charge.js"></script>
+
+    <script type="text/babel" src="components/resources/resource.js"></script>
+    <script type="text/babel" src="components/resources/transitionResource.js"></script>
+    <script type="text/babel" src="components/resources/chargeResource.js"></script>
+    <script type="text/babel" src="components/resources/quantityResource.js" ></script>
+
+    <script type="text/babel" src="components/players/badoosh.js"></script>
+    <script type="text/babel" src="components/players/osborn.js"></script>
+    <script type="text/babel" src="components/players/garnag.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      ReactDOM.render(
+        <App>
+          <Badoosh />
+        </App>,
+        document.getElementById('root')
+      );
+
+    </script>
+     <script>
+      window.onbeforeunload = function() { return true; }
+    </script>
+  </body>
+</html>
