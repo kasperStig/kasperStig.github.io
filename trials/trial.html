@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Trial</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>  
+    	<!-- Main css file -->
+    	<link rel="stylesheet" type="text/css" href="root.css" />
+    </head>
+
+    <body>
+        <trial class="panel panel--trial mt-2">
+            <header class="panel__header">
+                <h4 class="panel__title"><span id="title">Title</span></h4>
+                <ul class="panel__tags">
+                    <li>Trial</li>
+                    <li><span id="difficultyText"></span> / <span id="complexityText"></span></li>
+                </ul>
+            </header>
+            <section class="panel__body">
+				<div class="trial__details">
+					<div class="trial__detail">
+						<span class="trial__detail__name">DC</span>
+						<span class="trial__detail__modifier" id="difficulty">difficulty</span>
+					</div>
+					<div class="trial__detail">
+						<span class="trial__detail__name">Successes</span>
+						<span class="trial__detail__modifier" id="complexity">complexity</span>
+					</div>
+					<div class="trial__detail trial__detail--failures">
+						<span class="trial__detail__name">Failures</span>
+						<div class="trial__detail__modifier">
+						<span class="failure"></span>
+						<span class="failure"></span>
+						<span class="failure"></span>
+						<span class="failure"></span>
+						<span class="failure"></span>
+						</div>
+					</div>
+					<div class="trial__detail trial__detail--pacing">
+						<span class="trial__detail__name">Pace</span>
+						<div class="trial__detail__modifier"><span id="pacingCheck">checks</span> <span id="pacingInterval">per interval</span></div>
+					</div>
+					<div class="trial__detail trial__detail--deadline">
+						<span class="trial__detail__name">Deadline</span>
+						<div class="trial__detail__modifier"><span id="deadlineCount">checks</span> <span id="deadlineType">per interval</span></div>
+					</div>
+				</div>
+				<div class="trial__goal">
+					<p id="goal">Goal</p>
+					<table class="table trial__outcomes">
+						<thead>
+						<tr>
+							<th>Failures</th>
+							<th>Outcome</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>0</td>
+							<td><strong>Major Victory:</strong> <span id="majorVictory">Major Victory</span></td>
+						</tr>
+						<tr>
+							<td>1-2</td>
+							<td><strong>Minor Victory:</strong> <span id="minorVictory">Minor Victory</span></td>
+						</tr>
+						<tr>
+							<td>3-4</td>
+							<td><strong>Minor Defeat:</strong> <span id="minorDefeat">Minor Defeat</span></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td><strong>Major Defeat:</strong> <span id="majorDefeat">Major Defeat</span></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="trial__tasks" id="task_wrapper">
+				</div>
+			</section>
+		</trial>
+    </body>
+	<script>
+
+		function update(nodeId, content) {
+			document.getElementById(nodeId).textContent = content;
+		}
+
+		function updateContentByQueryString(params) {
+			update('title', 			params.get('title').trim());
+			update('goal',  			params.get('goal').trim());
+			update('majorVictory', 		params.get('majorVictory').trim());
+			update('minorVictory', 		params.get('minorVictory').trim());
+			update('minorDefeat', 		params.get('minorDefeat').trim());
+			update('majorDefeat', 		params.get('majorDefeat').trim());
+			update('pacingCheck', 		params.get('pacingCheck').trim());
+			update('pacingInterval', 	params.get('pacingInterval').trim());
+			update('deadlineCount', 	params.get('deadlineCount').trim());
+			update('deadlineType', 		params.get('deadlineType').trim());
+
+			let difficulty = params.get('difficulty').trim();
+			const difficultyMap = {
+				"5": "Very Easy",
+				"10": "Easy",
+				"15": "Medium",
+				"20": "Hard",
+				"25": "Very Hard",
+				"30": "Impossible",
+			};
+			let difficultyText = difficultyMap[difficulty];
+			update('difficultyText', difficultyText);
+			update('difficulty', difficulty);
+
+			let complexity = params.get('complexity').trim();
+			const complexityMap = {
+				"5": "Simple",
+				"10": "Straightforward",
+				"15": "Involved",
+				"20": "Detailed",
+				"25": "Intricate",
+				"30": "Complicated",
+			};
+			let complexityText = complexityMap[complexity];
+			update('complexityText', complexityText);
+			update('complexity', complexity);
+		}
+
+		function insertTasks(params) {
+			let tasks = params.get('tasks').trim().split(',');
+			tasks.forEach(task => {
+				let taskLetter = task;
+				let taskTitle = params.get(`${task}_title`).trim();
+				let taskDescription = params.get(`${task}_description`).trim();
+				let taskSuccesses = params.get(`${task}_successes`).trim();
+				let taskRequirements = params.get(`${task}_requirements`).trim();
+
+				let requirements = '';
+				if(taskRequirements !== '') {
+					requirements = `<i>(Requirements: ${taskRequirements.replace(',', ' & ')})</i> `;
+				}
+
+				let taskContent = `<div class="trial__task">
+							<span class="icon">${taskLetter}</span>
+							<span class="title">${taskTitle}</span>
+							<span class="successes">
+								${(function() {
+									let string = '';
+									for (let index = 0; index < parseInt(taskSuccesses); index++) {
+							
+										string += `<span class="success"></span>`
+									}
+									return string;
+								})()}
+							</span>
+							<div class="description">
+								<p>${requirements}${taskDescription}</p>
+							</div>
+						</div>`;
+				document.getElementById('task_wrapper').insertAdjacentHTML("beforeend", taskContent);		
+			});
+		}
+
+		const params = new URLSearchParams(window.location.search);
+		updateContentByQueryString(params);
+		insertTasks(params);
+
+		$('.failure').on('click', function() {
+			$(this).toggleClass('pressed');
+		});
+		$('.success').on('click', function() {
+			$(this).toggleClass('pressed');
+		});
+
+		$('body').css('height', $('header').outerHeight() + $('section').outerHeight());
+	</script>
+</html>

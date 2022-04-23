@@ -1,0 +1,457 @@
+<html>
+    <head>
+        <!-- The Storm: /trials/trial?title=The Storm&goal=Keep The Persephone together during the storm.&majorVictory=The Persephone weathers the storm without any damages. The crew celebrates and the players are gifted a Flask of Greater Healing.&minorVictory=The Persephone weathers the storm with negligent damages that can be easily fixed.&minorDefeat=The Persephone weathers the storm with minor damages that will take some effort to get fixed. The party gains two levels of exhaustion.&majorDefeat=The Persephone is significantly damaged during the storm. Fixing it will take a long time and require materials not on the ship. The party gains two levels of exhaustion and cannot get the benefit of a short or long rest until the ship is fixed.&difficulty=15&complexity=15&pacingCheck=1&pacingInterval=per Turn&deadlineCount=10&deadlineType=Rounds&tasks=A,B,C,D,E,F&A_title=Secure loose items&A_description=Secure the loose items on the deck&A_successes=3&A_requirements=&B_title=Reinforce the hull&B_description=Reinforce the hull of the ship&B_successes=4&B_requirements=&C_title=Stop the leask&C_description=Stop the leaks on the ship&C_successes=3&C_requirements=B&D_title=Repair torn ropes&D_description=Grab and repair the torn ropes of the mast&D_successes=2&D_requirements=&E_title=Secure the sail&E_description=Secure the sail so it doesn't tear&E_successes=2&E_requirements=D&F_title=Hold her steady&F_description=Steer The Persephone through the storm&F_successes=1&F_requirements=C,E-->
+        <meta charset="UTF-8" />
+        <title>Trial Generator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Load Roboto Mono font from Google -->
+        <link rel="preconnect" href="https://fonts.gstatic.com"> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>  
+        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    </head>
+
+    <body style="font-family: 'Roboto Mono', monospace;background: #f5f5f5;">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form class="py-4" novalidate>
+                        <div class="mt-4 px-4" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); background: white;">
+                            <div class="row pt-4">
+                                <div class="col">
+                                    <div class="text-center mb-3">
+                                        <strong>Trial</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="title" placeholder="Trial title" required>
+                                        <label for="title">Title</label>
+                                        <div class="invalid-feedback">
+                                            You must provide a title.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-4" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); background: white;">
+                            <div class="row pt-4">
+                                <div class="col">
+                                    <div class="text-center mb-3">
+                                        <strong>Goal & Outcomes</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="goal" placeholder="Trial goal"  required>
+                                        <label for="goal">Goal</label>
+                                        <div class="invalid-feedback">
+                                            You must define the overall goal - what is it the players are trying to accomplish?
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-lg">
+                                    <div class="form-floating mb-3">
+                                        <textarea type="text" class="form-control" id="major_victory" placeholder="Major victory" style="min-height: 100px" required></textarea>
+                                        <label for="major_victory">Major Victory</label>
+                                        <div class="invalid-feedback">
+                                            You must define how the goal is achieved with exceptional results and what benefits/loot the players gain.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="form-floating mb-3">
+                                        <textarea type="text" class="form-control" id="minor_victory" placeholder="Minor victory" style="min-height: 100px" required></textarea>
+                                        <label for="minor_victory">Minor Victory</label>
+                                        <div class="invalid-feedback">
+                                            You must define how the goal is achieved and what benefits/loot the players gain.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="form-floating mb-3">
+                                        <textarea type="text" class="form-control" id="minor_defeat" placeholder="Minor Defeat" style="min-height: 100px" required></textarea>
+                                        <label for="minor_defeat">Minor Defeat</label> 
+                                        <div class="invalid-feedback">
+                                            You must define how the players failed to achieve the goal or achieved it but suffered a significant penalty.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="form-floating mb-3">
+                                        <textarea type="text" class="form-control" id="major_defeat" placeholder="Major Defeat" style="min-height: 100px" required></textarea>
+                                        <label for="major_defeat">Major Defeat</label>
+                                        <div class="invalid-feedback">
+                                            You must define how the players failed to achieve the goal or achieved it but suffered a catastrophic penalty.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-4" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); background: white;">
+                            <div class="row pt-4">
+                                <div class="col">
+                                    <div class="text-center mb-3">
+                                        <strong>Difficulty & Complexity</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <div class="form-floating mb-3">
+                                        <select id="difficulty" class="form-select" required>
+                                            <option selected disabled value="">Select task DC</option>
+                                            <option value="5">5 (Very Easy)</option>
+                                            <option value="10">10 (Easy)</option>
+                                            <option value="15">15 (Medium)</option>
+                                            <option value="20">20 (Hard)</option>
+                                            <option value="25">25 (Very Hard)</option>
+                                            <option value="30">30 (Impossible)</option>
+                                        </select>
+                                        <label for="difficulty">Difficulty</label>
+                                        <div class="invalid-feedback">
+                                            You must define the base difficulty of the tasks the players must complete.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="form-floating mb-3">
+                                        <select id="complexity" class="form-select" required>
+                                            <option selected disabled value="">Select number of successes required </option>
+                                            <option value="5">5 (Simple)</option>
+                                            <option value="10">10 (Straightforward)</option>
+                                            <option value="15">15 (Involved)</option>
+                                            <option value="20">20 (Detailed)</option>
+                                            <option value="25">25 (Intricate)</option>
+                                            <option value="30">30 (Complicated)</option>
+                                        </select>
+                                        <label for="complexity">Complexity</label>
+                                        <div class="invalid-feedback">
+                                            You must define how many successes the players need to complete the trial.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-4" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); background: white;">
+                            <div class="row pt-4">
+                                <div class="col d-none d-lg-block">
+                                    <div class="text-center mb-3">
+                                        <strong>Pacing</strong>
+                                    </div>
+                                </div>
+                                <div class="col d-none d-lg-block">
+                                    <div class="text-center mb-3">
+                                        <strong>Deadline</strong>
+                                    </div>
+                                </div>
+                                <div class="col d-lg-none">
+                                    <div class="text-center mb-3">
+                                        <strong>Pacing & Deadline</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="pacing_checks" placeholder="1" required>
+                                                <label for="pacing_checks">Pacing checks</label>
+                                                <div class="invalid-feedback">
+                                                    You must define how many checks the players can make within a certain time.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm">
+                                            <div class="form-floating mb-3">
+                                                <select id="pacing" class="form-select" required>
+                                                    <option selected disabled value="">Select pacing interval</option>
+                                                    <option value="per Turn">per turn (Extra-fast)</option>
+                                                    <option value="per Round">per round (Fast)</option>
+                                                    <option value="per Hour">per hour (Slow)</option>
+                                                    <option value="per Day">per day (Extra-slow)</option>
+                                                    <option value="per Week">per week (Weekly)</option>
+                                                    <option value="per Month">per month (Monthly)</option>
+                                                    <option value="per Year">per year (Yearly)</option>
+                                                    <option value="per Decade">per decade (Decadal)</option>
+                                                </select>
+                                                <label for="pacing">Interval</label>
+                                                <div class="invalid-feedback">
+                                                    You must define in what timeframe the players can make the checks.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <div class="form-floating mb-3">
+                                                <input type="number" class="form-control" id="deadline_count" placeholder="1" required>
+                                                <label for="deadline_count">Deadline</label>
+                                                <div class="invalid-feedback">
+                                                    You must define how long the deadline is.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm">
+                                            <div class="form-floating mb-3">
+                                                <select id="deadline_type" class="form-select" required>
+                                                    <option selected disabled value="">Select deadline type</option>
+                                                    <option value="Turns">turns (Turns)</option>
+                                                    <option value="Rounds">rounds (Rounds)</option>
+                                                    <option value="Minutes">minutes (Minutes)</option>
+                                                    <option value="Hours">hours (Hourly)</option>
+                                                    <option value="Days">days (Daily)</option>
+                                                    <option value="Weeks">weeks (Weekly)</option>
+                                                    <option value="Years">years (Yearly)</option>
+                                                </select>
+                                                <label for="deadline_type">Type</label>
+                                                <div class="invalid-feedback">
+                                                    You must define the type of the deadline.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 px-4" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); background: white;">
+                            <div class="row pt-4">
+                                <div class="col">
+                                    <div class="text-center mb-3">
+                                        <strong>Tasks</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="task_wrapper">
+                                <div class="row pb-4 pb-lg-0">
+                                    <div class="col-1" style="align-self:center;">
+                                        <div class="input-group mb-3" style="justify-content:center;">
+                                            <span class="input-group-text">A</span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="task_title_1" data-task="title" placeholder="Task title" required>
+                                            <label for="task_title_1">Task title</label>
+                                            <div class="invalid-feedback">
+                                                You must define the title of the task.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="task_text_1" data-task="description" placeholder="Task text" required>
+                                            <label for="task_text_1">Task description</label>
+                                            <div class="invalid-feedback">
+                                                You must define the description of the task.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg">
+                                        <div class="form-floating mb-3">
+                                            <input type="number" class="form-control" id="task_successes_1" data-task="successes" placeholder="1" required>
+                                            <label for="task_successes_1">Task successes</label>
+                                            <div class="invalid-feedback">
+                                                You must define the number of successes required for the task.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg" data-task="options">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="task_requirement_1" value="task_requirement_1">
+                                            <label class="form-check-label" for="task_requirement_1">A</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-floating mb-3">
+                                        <button type="button" id="task_button" class="btn btn-primary">Add Task</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-1 py-4">
+                                <button type="submit" class="btn btn-primary">Submit</button> 
+                            </div>
+                            <div class="col-10">
+                                <div class="py-4" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 100%;">
+                                    <a style='display: none; line-height: 38px;' id='trial_link' href="" target="_blank" rel="noopener noreferrer">Trial link</a>
+                                </div>
+                            </div>
+                            <div class="col-1 py-4">
+                                <button type="button" class="btn btn-secondary" id='trial_copy' style='display: none; width: 83.61px' onclick="copyToClipBoard()" title="Copy to clipboard">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button> 
+                            </div>
+                        </div>
+                       </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+
+        function getTasks() {
+            let taskWrapper = $('#task_wrapper');
+            let tasks = [];
+
+            taskWrapper.children().each(function(i, row) {
+                let taskRow = $(row);
+                let letter = taskRow.find('.input-group-text').text();
+                let title = taskRow.find('[data-task="title"]').val();
+                let description = taskRow.find('[data-task="description"]').val();
+                let successes = taskRow.find('[data-task="successes"]').val();
+
+                let optionsWrapper = taskRow.find('[data-task="options"]');
+                let requirements = [];
+                optionsWrapper.children().each(function(_, c) {
+                    let checkbox = $(c);
+                    if(checkbox.find('input').is(":checked")) {
+                        let requiredTask = checkbox.find('label').text();
+                        requirements.push(requiredTask);
+                    }
+                });
+
+                let task = {
+                    letter: letter,
+                    title : title,
+                    description : description,
+                    successes : successes,
+                    requirements: requirements
+                };
+                tasks.push(task);
+            });
+            return tasks;
+        }
+
+
+        $("form").on("submit", function( event ) {
+            event.preventDefault();
+            $(this).addClass('was-validated');
+            if($(this)[0].checkValidity()) {
+                var queryString = `?title=${$('#title').val().trim()}`
+                + `&goal=${$('#goal').val().trim()}`
+                + `&majorVictory=${$('#major_victory').val().trim()}`
+                + `&minorVictory=${$('#minor_victory').val().trim()}`
+                + `&minorDefeat=${$('#minor_defeat').val().trim()}`
+                + `&majorDefeat=${$('#major_defeat').val().trim()}`
+                + `&difficulty=${$('#difficulty').val().trim()}`
+                + `&complexity=${$('#complexity').val().trim()}`
+                + `&pacingCheck=${$('#pacing_checks').val().trim()}`
+                + `&pacingInterval=${$('#pacing').val().trim()}`
+                + `&deadlineCount=${$('#deadline_count').val().trim()}`
+                + `&deadlineType=${$('#deadline_type').val().trim()}`;
+
+                let tasks = getTasks();
+                queryString = `${queryString}&tasks=${tasks.map(t => t.letter).toString().trim()}`;
+
+                tasks.forEach((task => {
+                    queryString = `${queryString}`
+                    + `&${task.letter}_title=${task.title.trim()}`
+                    + `&${task.letter}_description=${task.description.trim()}`
+                    + `&${task.letter}_successes=${task.successes.trim()}`
+                    + `&${task.letter}_requirements=${task.requirements.toString().trim()}`;
+                }));
+
+
+                $('#trial_link').attr('href', `https://kasperstig.github.io/trials/trial${queryString}`);
+                $('#trial_link').fadeOut(300, function() { $(this).text(`https://kasperstig.github.io/trials/trial${queryString}`);}).fadeIn(300);
+                $('#trial_link').show(300);
+                $('#trial_copy span').fadeOut(300, function() { $(this).text('content_copy'); }).fadeIn(300);
+                $('#trial_copy').show(300);
+            }
+        });
+
+        let options = [`<div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="task_requirement_1" value="task_requirement_1">
+                            <label class="form-check-label" for="task_requirement_1">A</label>
+                        </div>`];
+
+        function updateOptions(task_letter, task_counter) 
+        {
+            const newOption = `<div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="task_requirement_${task_counter}" value="task_requirement_${task_counter}">
+                                 <label class="form-check-label" for="task_requirement_${task_counter}">${task_letter}</label>
+                              </div>`;
+            options.push(newOption);
+
+            $('[data-task="options"]').each(function(i, e) {
+                $(e).append(newOption);
+            });
+        }
+
+        function copyToClipBoard() {
+            $('#trial_copy span').fadeOut(300, function() { $(this).text('check'); }).fadeIn(300);
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($('#trial_link').attr('href')).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+
+        $(function() {
+            $("#task_button").on('click', function() {
+              
+                const taskCounter = $('#task_wrapper').children().length + 1;
+                const str = 'A';
+                const nextLetter = String.fromCharCode(str.charCodeAt(str.length - 1) + taskCounter - 1);
+                updateOptions(nextLetter, taskCounter);
+
+                $('#task_wrapper').append(`
+                    <div class="row pb-4 pb-lg-0">
+                        <div class="col-1" style="align-self:center;">
+                            <div class="input-group mb-3" style="justify-content:center;">
+                                <span class="input-group-text">${nextLetter}</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="task_title_${taskCounter}" data-task="title" placeholder="Task title" required>
+                                <label for="task_title_${taskCounter}">Task title</label>
+                                <div class="invalid-feedback">
+                                    You must define the title of the task.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="task_text_${taskCounter}" data-task="description" placeholder="Task text" required>
+                                <label for="task_text_${taskCounter}">Task description</label>
+                                <div class="invalid-feedback">
+                                    You must define the description of the task.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="task_successes_${taskCounter}" data-task="successes" placeholder="1" required>
+                                <label for="task_successes_${taskCounter}">Task successes</label>
+                                <div class="invalid-feedback">
+                                    You must define the number of successes required for the task.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg" data-task="options">
+                            ${options.toString().replaceAll(',','')}
+                        </div>
+                    </div>
+                `);
+            });
+        });
+    </script>
+</html>

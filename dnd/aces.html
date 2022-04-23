@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8" />
+	<title>Ace's High</title>
+
+	<!-- Load Roboto Mono font from Google -->
+	<link rel="preconnect" href="https://fonts.gstatic.com"> 
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+	  <!-- Load icons from Google -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Main css file -->
+	<link rel="stylesheet" type="text/css" href="styling/aces.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- Script -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="aces.js"></script>
+
+  </head>
+  <body>
+	<div class='pt-5 container' id="root">
+	  <div class="row">
+
+		<div id='players' class="col-3">
+
+		  <div class="osborn player box row p-2">
+			<div class='col-12 box title mb-1 text-center'>Osborn</div>
+			<div class="col-2">
+				<div id='osborn_flight-modifier' class="justify-content-center flight-mod box p-1 mb-1 row">+3</div>
+				<div id='osborn_altitude' class="justify-content-center altitude box py-4  row bold">
+				  <span class='icon less mr-1'>-</span>
+				  <span class="altitude-value">6</span>
+				  <span class='icon more ml-1'>+</span>
+				</div>
+				<div id='osborn_hitpoint' class="justify-content-center flight-mod box p-1 mt-1 row">
+					<input class='hp temp' type="text" value="62" ></input>
+				</div>
+			  </div>
+			  <div id="osborn_stunt-dice" class="py-4 ml-1 stunt-dice col-7">
+				<div id="dice-array" class="col"></div>
+			  </div>
+			  <div class='buttons box col ml-1 p-2'>
+				<div id='osborn_roll' class='col roll-stunt-dice p-2'>
+					Roll
+				  </div>
+				  <div class='col my-2'>
+					<div class="row">
+						<input type="text" id='osborn_add_value' class="col p-0 mr-1 text-center add">
+						<div id='osborn_add' class='col roll-stunt-dice p-2'>
+							Add
+						</div>
+				  	</div>
+				</div>
+				<div id='osborn_spend' class='col spend roll-stunt-dice p-2'>
+					Spend
+				</div>
+			  </div>
+		  </div>
+		  <div class="garnag player box row p-2 mt-3">
+			<div class='col-12 box title mb-1 text-center'>Garnag</div>
+			<div class="col-2">
+				<div id='garnag_flight-modifier' class="justify-content-center flight-mod box p-1 mb-1 row">+3</div>
+				<div id='garnag_altitude' class="justify-content-center altitude box py-4 row bold">
+				  <span class='icon less mr-1'>-</span>
+				  <span class="altitude-value">6</span>
+				  <span class='icon more ml-1'>+</span>
+				</div>
+				<div id='garnag_hitpoint' class="justify-content-center flight-mod box p-1 mt-1 row">
+					<input class='hp temp' type="text" value="62" ></input>
+				</div>
+			  </div>
+			  <div id="garnag_stunt-dice" class="py-4 ml-1 stunt-dice box col-7">
+				<div id="dice-array" class="col"></div>
+			  </div>
+			  <div class='buttons box col ml-1 p-2'>
+				<div id='garnag_roll' class='col roll-stunt-dice p-2'>
+					Roll
+				  </div>
+				  <div class='col my-2'>
+					<div class="row">
+						<input type="text" id='garnag_add_value'  class="col p-0 mr-1 text-center add">
+						<div id='garnag_add' class='col roll-stunt-dice p-2'>
+							Add
+						</div>
+				  	</div>
+				</div>
+				<div id='garnag_spend' class='col spend roll-stunt-dice p-2'>
+					Spend
+				</div>
+			  </div>
+		  </div>
+		  <div class="zerath player box row p-2 mt-3">
+			<div class='col-12 box title mb-1 text-center'>Zerath</div>
+			<div class="col-2">
+				<div id='zerath_flight-modifier' class="justify-content-center flight-mod box p-1 mb-1 row">+3</div>
+				<div id='zerath_altitude' class="justify-content-center altitude box py-4  row bold">
+				  <span class='icon less mr-1'>-</span>
+				  <span class="altitude-value">6</span>
+				  <span class='icon more ml-1'>+</span>
+				</div>
+				<div id='zerath_hitpoint' class="justify-content-center flight-mod box p-1 mt-1 row">
+					<input class='hp temp' type="text" value="62" ></input>
+				</div>
+			  </div>
+			  <div id="zerath_stunt-dice" class="py-4 ml-1 stunt-dice box col-7">
+				<div id="dice-array" class="col"></div>
+			  </div>
+			  <div class='buttons box col ml-1 p-2'>
+				<div id='zerath_roll' class='col roll-stunt-dice p-2'>
+					Roll
+				</div>
+				<div class='col my-2'>
+					<div class="row">
+						<input id='zerath_add_value' type="text" class="col p-0 mr-1 text-center add">
+						<div id='zerath_add' class='col roll-stunt-dice p-2'>
+							Add
+						</div>
+				  	</div>
+				</div>
+				<div id='zerath_spend' class='col spend roll-stunt-dice p-2'>
+					Spend
+				</div>
+			  </div>
+		  </div>
+		</div>
+		<div class='col-1'>
+			<div class='ruler'></div>
+		</div>
+		<div class='col-7 '>
+			<div class="row justify-content-center">
+				<div class="col-10 box monsters py-2 text-center">
+					<input id='monster-name' class='add' type="text" value="Name"></input>
+					<input id='monster-flight-mod' class='add' type="text" value="+3"></input>
+					<input id='monster-altitude' class='add' type="text" value="6"></input>
+					<input id='monster-hp' class='add' type="text" value="42"></input>
+					<input id='monster-temphp' class='add' type="text" value="2"></input>
+					<button id='monster-add' class='add'>Add</button>
+				</div>
+			
+			</div>
+			<div class='row' id='monsters'>
+
+			</div>
+		</div>
+	  </div>
+	 
+	</div>
+	
+	 <script>
+	  window.onbeforeunload = function() { return true; }
+	  
+	  $(function() {
+		init();
+	  });
+  
+	</script>
+  </body>
+</html>

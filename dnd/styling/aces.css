@@ -1,0 +1,227 @@
+body {
+  background: url(sky.jpeg) center;
+}
+body #root {
+  font-family: 'Roboto Mono', monospace;
+}
+body .container {
+  max-width: 90%;
+}
+body .box {
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+body .player {
+  color: white;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+body .player .altitude {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: normal;
+}
+body .player .altitude .icon {
+  cursor: pointer;
+  user-select: none;
+}
+body .player .hp {
+  width: 100%;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}
+body .player .hp:focus {
+  outline: none;
+}
+body .player .hp.temp {
+  border: 1px solid yellow;
+}
+body .player .stunt-dice .dice {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+  transition: opacity 0.2s ease;
+  display: inline-flex;
+}
+body .player .stunt-dice .dice:hover {
+  text-decoration-color: white;
+}
+body .player .stunt-dice .dice.selected {
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: 1px solid white;
+}
+body .player .buttons .roll-stunt-dice {
+  background-color: coral;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+body .player .buttons .roll-stunt-dice:hover {
+  filter: brightness(1.2);
+}
+body .player .buttons .roll-stunt-dice:active {
+  filter: brightness(0.8);
+}
+body .player .buttons .add {
+  border-radius: 5px;
+  color: white;
+  border: none;
+}
+.hidden {
+  opacity: 0;
+}
+.ruler {
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  border-left: 1px solid black;
+}
+.osborn {
+  background: #003300;
+}
+.osborn .flight-mod,
+.osborn .stunt-dice,
+.osborn .buttons,
+.osborn .title {
+  background: #1b5e20;
+}
+.osborn .hp {
+  background: #003300;
+}
+.osborn .hp.going-down {
+  border: 1px solid red;
+}
+.osborn .altitude {
+  background: #1b5e20;
+}
+.osborn .altitude.high {
+  background-image: radial-gradient(circle, #1b5e20, #1b5e20, yellow);
+}
+.osborn .altitude.low {
+  background-image: radial-gradient(circle, #1b5e20, #1b5e20, red);
+}
+.osborn .altitude.crash {
+  background-color: red;
+}
+.osborn .add {
+  background: #003300;
+}
+.garnag {
+  background: #7f0000;
+}
+.garnag .flight-mod,
+.garnag .stunt-dice,
+.garnag .buttons,
+.garnag .title {
+  background: #b71c1c;
+}
+.garnag .hp {
+  background: #7f0000;
+}
+.garnag .hp.going-down {
+  border: 1px solid orange;
+}
+.garnag .altitude {
+  background: #b71c1c;
+}
+.garnag .altitude.high {
+  background-image: radial-gradient(circle, #b71c1c, #b71c1c, yellow);
+}
+.garnag .altitude.low {
+  background-image: radial-gradient(circle, #b71c1c, #b71c1c, orange);
+}
+.garnag .altitude.crash {
+  background-color: red;
+}
+.garnag .add {
+  background: #7f0000;
+}
+.zerath {
+  background: #38006b;
+}
+.zerath .flight-mod,
+.zerath .stunt-dice,
+.zerath .buttons,
+.zerath .title {
+  background: #6a1b9a;
+}
+.zerath .hp {
+  background: #38006b;
+}
+.zerath .hp.going-down {
+  border: 1px solid red;
+}
+.zerath .altitude {
+  background: #6a1b9a;
+}
+.zerath .altitude.high {
+  background-image: radial-gradient(circle, #6a1b9a, #6a1b9a, yellow);
+}
+.zerath .altitude.low {
+  background-image: radial-gradient(circle, #6a1b9a, #6a1b9a, red);
+}
+.zerath .altitude.crash {
+  background-color: red;
+}
+.zerath .add {
+  background: #38006b;
+}
+.monsters {
+  background: #102027;
+}
+.monsters .flight-mod,
+.monsters .stunt-dice,
+.monsters .buttons,
+.monsters .title {
+  background: #37474f;
+}
+.monsters .flight-mod .add,
+.monsters .stunt-dice .add,
+.monsters .buttons .add,
+.monsters .title .add {
+  max-width: unset;
+  background: #102027;
+}
+.monsters .hp {
+  background: #102027;
+}
+.monsters .hp.going-down {
+  border: 1px solid red;
+}
+.monsters .altitude {
+  background: #37474f;
+}
+.monsters .altitude.high {
+  background-image: radial-gradient(circle, #37474f, #37474f, yellow);
+}
+.monsters .altitude.low {
+  background-image: radial-gradient(circle, #37474f, #37474f, red);
+}
+.monsters .altitude.crash {
+  background-color: red;
+}
+.monsters .add {
+  border-radius: 5px;
+  background: #37474f;
+  color: white;
+  border: none;
+  max-width: 15%;
+  text-align: center;
+}
+.monsters #monster-add {
+  background-color: coral;
+}
