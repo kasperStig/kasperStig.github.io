@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Madliste - Kaniner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+        <link rel="apple-touch-icon-precomposed" href="./touchicon.png">
+
+        <link rel="stylesheet" type="text/css" href="../assets/css/kaniner.css">
+
+        <!-- Static font from Google to use icons -->
+        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    </head>
+    <body>
+        <div class="rabbit-wrapper">
+            <div class="header">
+                <div class="search">
+                    <input id="input" class="input" type="text" autofocus onkeyup="filter()">
+                    <span class="icon material-symbols-outlined">search</span>
+                </div>
+            </div>
+            <div class="body">
+                <div class="food-wrapper">
+                    <div class="food green">
+                        <span class="item">Rucola salat</span>
+                        <span class="item">Krølsalat</span>
+                        <span class="item">Hovedsalat</span>
+                        <span class="item">Romaine salat</span>
+                        <span class="item">Hjertesalat</span>
+                        <span class="item">Pluksalat</span>
+                        <span class="item">Bindsalat</span>
+                        <span class="item">Rød krusbladet salat</span>
+                        <span class="item">Feldsalat</span>
+                        <span class="item">Radicchio salat</span>
+                        <span class="item">Fennikel</span>
+                        <span class="item">Brøndkarse</span>
+                        <span class="item">Gulerodstoppe</span>
+                        <span class="item">Agurkeblade</span>
+                        <span class="item">Radisetoppe</span>
+                        <span class="item">Ærtebælge (skrald)</span>
+                        <span class="item">Koriander</span>
+                        <span class="item">Basilikum</span>
+                        <span class="item">Persille</span>
+                        <span class="item">Timian</span>
+                        <span class="item">Dild</span>
+                        <span class="item">Mynte</span>
+                        <span class="item">Citronmelisse</span>
+                    </div>
+                    <div class="food yellow">
+                        <span class="item">Gulerod</span>
+                        <span class="item">Pastinak</span>
+                        <span class="item">Spinat</span>
+                        <span class="item">Brocolli</span>
+                        <span class="item">Blomkål</span>
+                        <span class="item">Selleri</span>
+                        <span class="item">Grøn peberfrugt</span>
+                        <span class="item">Squash</span>
+                        <span class="item">Rødbede</span>
+                        <span class="item">Asparges</span>
+                        <span class="item">Græskar</span>
+                        <span class="item">Artiskok</span>
+                        <span class="item">Jordskok</span>
+                        <span class="item">Persillerod</span>
+                        <span class="item"></span>
+                    </div>
+                    <div class="food purple">
+                        <span class="item">Æbler (u. kerner)</span>
+                        <span class="item">Pære (u. kerner)</span>
+                        <span class="item">Fersken</span>
+                        <span class="item">Kiwi</span>
+                        <span class="item">Mango</span>
+                        <span class="item">Bær (u. kerner)</span>
+                        <span class="item">Gul peberfrugt</span>
+                        <span class="item">Rød peberfrugt</span>
+                        <span class="item">Papaya</span>
+                        <span class="item">Ananas</span>
+                        <span class="item">Banan</span>
+                        <span class="item">Melon</span>
+                    </div>
+                    <div class="food red">
+                        <span class="item">Ærter</span>
+                        <span class="item">Majs</span>
+                        <span class="item">Løg</span>
+                        <span class="item">Avocado</span>
+                        <span class="item">Kartofler</span>
+                        <span class="item">Teblade</span>
+                        <span class="item">Bambusskud</span>
+                        <span class="item">Citrusblade</span>
+                        <span class="item">Rododendron</span>
+                        <span class="item">Bønner</span>
+                        <span class="item">Tomatplanter</span>
+                        <span class="item">Æble-/pærekerner + stilk</span>
+                        <span class="item">Kastanjer</span>
+                        <span class="item">Nødder</span>
+                        <span class="item">Chokolade</span>
+                        <span class="item">Korn</span>
+                        <span class="item">Frø</span>
+                        <span class="item">Kanin</span>
+                        <span class="item">Is</span>
+                        <span class="item">Blæksprutte</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="legend-wrapper">
+                    <div class="legend green">
+                        Go' fin
+                    </div>
+                    <div class="legend yellow">
+                        Ro på
+                    </div>
+                    <div class="legend purple">
+                        Sjældent
+                    </div>
+                    <div class="legend red">
+                        Aldrig
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function filter() {
+            let input = document.getElementById('input');
+            let filter = input.value.toUpperCase();
+            let items = document.getElementsByClassName('item');
+            for (let index = 0; index < items.length; index++) {
+                let itemValue = items[index].textContent;
+                if (containsString(itemValue, filter)) {
+                    items[index].style.display = "";
+                } else {
+                    items[index].style.display = "none";
+                }   
+            }
+        }
+
+        function containsString(input, match) {
+            return input.toUpperCase().indexOf(match) > -1;
+        }
+    </script>
+</html>
