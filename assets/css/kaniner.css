@@ -34,6 +34,7 @@ body {
   -webkit-appearance: none;
   outline: none;
   font-size: 2em;
+  caret-color: black;
 }
 .rabbit-wrapper .header .search .icon {
   margin-right: 1em;
