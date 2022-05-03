@@ -30,11 +30,11 @@ body {
   width: 90%;
   background: inherit;
   border: none;
-  color: black;
+  color: #212121;
   -webkit-appearance: none;
   outline: none;
   font-size: 2em;
-  caret-color: black;
+  caret-color: #212121;
   height: 100%;
 }
 .rabbit-wrapper .header .search .icon {
