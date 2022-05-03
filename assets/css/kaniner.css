@@ -33,6 +33,7 @@ body {
   -webkit-appearance: none;
   outline: none;
   font-size: 2em;
+  height: 1em;
 }
 .rabbit-wrapper .header .search .icon {
   margin-right: 1em;
