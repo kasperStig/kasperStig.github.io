@@ -3,6 +3,7 @@
 }
 body {
   margin: 0;
+  font-size: 16px;
 }
 .rabbit-wrapper .header {
   display: flex;
