@@ -8,15 +8,21 @@ body {
   height: 4em;
   width: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: #212121;
 }
 .rabbit-wrapper .header .search {
-  background: grey;
+  background: #ebebeb;
   width: 60%;
   height: 3em;
   border-radius: 2em;
   align-items: center;
   justify-content: space-between;
   display: flex;
+}
+@media (max-width: 1200px) {
+  .rabbit-wrapper .header .search {
+    width: 90%;
+  }
 }
 .rabbit-wrapper .header .search .input {
   margin-left: 1em;
@@ -30,23 +36,47 @@ body {
 }
 .rabbit-wrapper .header .search .icon {
   margin-right: 1em;
-  pointer-events: none;
 }
 .rabbit-wrapper .body {
   display: flex;
   width: 100%;
   align-content: center;
   justify-content: center;
+  height: calc(100% - 8em);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .rabbit-wrapper .body .food-wrapper {
   display: flex;
   padding: 2em 0;
   width: 60%;
 }
+@media (max-width: 1200px) {
+  .rabbit-wrapper .body .food-wrapper {
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .rabbit-wrapper .body .food-wrapper {
+    flex-direction: column;
+  }
+}
+@media (max-width: 480px) {
+  .rabbit-wrapper .body .food-wrapper {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+}
 .rabbit-wrapper .body .food-wrapper .food {
   width: 100%;
   padding: 0 1em;
   text-align: center;
+}
+@media (max-width: 760px) {
+  .rabbit-wrapper .body .food-wrapper .food {
+    padding: 0;
+  }
 }
 .rabbit-wrapper .body .food-wrapper .food .item {
   padding: 0.5em 1em;
@@ -61,13 +91,18 @@ body {
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.12), 0 -1px 2px rgba(0, 0, 0, 0.24);
   display: flex;
   justify-content: center;
-  background-color: grey;
+  background-color: #212121;
 }
 .rabbit-wrapper .footer .legend-wrapper {
   display: flex;
   width: 60%;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 480px) {
+  .rabbit-wrapper .footer .legend-wrapper {
+    width: 100%;
+  }
 }
 .rabbit-wrapper .footer .legend-wrapper .legend {
   width: 100%;

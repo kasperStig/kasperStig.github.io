@@ -3,20 +3,17 @@
         <meta charset="UTF-8" />
         <title>Madliste - Kaniner</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="icon" type="image/x-icon" href="./favicon.ico">
         <link rel="apple-touch-icon-precomposed" href="./touchicon.png">
-
         <link rel="stylesheet" type="text/css" href="../assets/css/kaniner.css">
-
-        <!-- Static font from Google to use icons -->
-        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     </head>
     <body>
         <div class="rabbit-wrapper">
             <div class="header">
                 <div class="search">
                     <input id="input" class="input" type="text" autofocus onkeyup="filter()">
-                    <span class="icon material-symbols-outlined">search</span>
+                    <img class="icon" src="./looking-glass.png" alt="Looking glass icon" width="24" height="24" onclick="focusInput()">
                 </div>
             </div>
             <div class="body">
@@ -61,7 +58,6 @@
                         <span class="item">Artiskok</span>
                         <span class="item">Jordskok</span>
                         <span class="item">Persillerod</span>
-                        <span class="item"></span>
                     </div>
                     <div class="food purple">
                         <span class="item">Æbler (u. kerner)</span>
@@ -122,20 +118,20 @@
     <script>
         function filter() {
             let input = document.getElementById('input');
-            let filter = input.value.toUpperCase();
+            let filterText = input.value.toUpperCase();
             let items = document.getElementsByClassName('item');
-            for (let index = 0; index < items.length; index++) {
-                let itemValue = items[index].textContent;
-                if (containsString(itemValue, filter)) {
-                    items[index].style.display = "";
+            for (let i = 0; i < items.length; i++) {
+                let itemText = items[i].textContent.toUpperCase();
+                if(itemText.includes(filterText)) {
+                    items[i].style.display = "";
                 } else {
-                    items[index].style.display = "none";
+                    items[i].style.display = "none";
                 }   
             }
         }
 
-        function containsString(input, match) {
-            return input.toUpperCase().indexOf(match) > -1;
+        function focusInput() {
+            document.getElementById('input').focus();
         }
     </script>
 </html>
