@@ -36,6 +36,7 @@ body {
   font-size: 2em;
   caret-color: #212121;
   height: 100%;
+  line-height: 2em;
 }
 .rabbit-wrapper .header .search .icon {
   margin-right: 1em;
