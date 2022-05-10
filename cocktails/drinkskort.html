@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta charset="UTF-8"  name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Drinkskort</title>
+        <link rel="preload" href="../assets/css/cocktails.css" as="style">
+        <link rel="preload" href="./looking-glass.png" as="image">
+
+        <link rel="stylesheet" type="text/css" href="../assets/css/cocktails.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="search">
+                    <input id="input" class="input" type="text" autofocus onkeyup="filter()">
+                    <img class="icon" src="./looking-glass.png" alt="Looking glass icon" width="24" height="24" onclick="focusInput()">
+                </div>
+            </div>
+            <div class="body">
+                <div class="cocktail-card">
+                    <div class="cocktail-card-inner">
+                     <div class="cocktail-card-front">
+                         <div class="name">
+                             Manhatten
+                         </div>
+                         <img class="swirl" src="./swirl.png">
+                         <div class="content">
+                             Whiskey / sweet vermouth / cherries
+                         </div>
+                       </div>
+                       <div class="cocktail-card-back">
+                        <div class="name">
+                            Manhatten
+                        </div>
+                         <ul>
+                             <li>2 part whiskey</li>
+                             <li>1 part sweet vermouth</li>
+                             <li>Cherry</li>
+                         </ul>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+              
+            </div>
+        </div>
+    </body>
+    <script>
+        function filter() {
+            let searchTerms = document.getElementById('input').value.toUpperCase().split(',');
+            let items = document.getElementsByClassName('content');
+            for (let i = 0; i < items.length; i++) {
+                let itemText = items[i].textContent.toUpperCase();
+                let isMatch = searchTerms.every(term => itemText.includes(term))
+                if(isMatch) {
+                    items[i].closest(".cocktail-card").style.display = "";
+                } else {
+                    items[i].closest(".cocktail-card").style.display = "none";
+                }   
+            }
+        }
+
+        function focusInput() {
+            document.getElementById('input').focus();
+        }
+
+        function flip(event) {
+            let card = event.srcElement.closest('.cocktail-card');
+            if(card.classList.contains('flipped')) {
+                card.classList.remove('flipped');
+            } else {
+                card.classList.add('flipped');
+            }
+        }
+        var card = document.getElementsByClassName("cocktail-card");
+        for (var i = 0; i < card.length; i++) {
+            card[i].addEventListener('click', flip, false);
+        }
+
+    </script>
+</html>
